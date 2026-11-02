@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Anton, Archivo, IBM_Plex_Mono } from "next/font/google";
 import { getDictionary } from "@/i18n/dictionaries";
 import { hasLocale, locales } from "@/i18n/config";
+import { siteUrl } from "@/lib/site";
 import "lenis/dist/lenis.css";
 import "../globals.css";
 
@@ -40,9 +41,20 @@ export async function generateMetadata({
   if (!hasLocale(lang)) return {};
   const d = getDictionary(lang);
   return {
+    metadataBase: new URL(siteUrl),
     title: d.meta.title,
     description: d.meta.description,
-    alternates: { languages: { "pt-BR": "/pt", en: "/en" } },
+    authors: [{ name: "Iuran Freire" }],
+    alternates: { canonical: `/${lang}`, languages: { "pt-BR": "/pt", en: "/en" } },
+    openGraph: {
+      type: "website",
+      url: `/${lang}`,
+      siteName: "Iuran Freire",
+      title: d.meta.title,
+      description: d.meta.description,
+      locale: lang === "pt" ? "pt_BR" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title: d.meta.title, description: d.meta.description },
   };
 }
 
