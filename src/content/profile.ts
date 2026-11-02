@@ -20,6 +20,7 @@ export const contacts = {
   linkedin: "https://www.linkedin.com/in/iuran-freire-a23092204",
   github: "https://github.com/Iuran-Freire",
   whatsapp: "https://wa.me/5592985923140",
+  phoneDisplay: "(92) 98592-3140",
   siteSource: "https://github.com/Iuran-Freire/Portifolio3.0",
 };
 

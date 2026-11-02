@@ -84,17 +84,46 @@ export const deployCopy = {
     en: "Let's talk about your opening",
   } satisfies Localized,
   body: {
-    pt: "Me escreva por e-mail ou pelo LinkedIn. O currículo está em português e em inglês.",
-    en: "Email me or reach out on LinkedIn. My résumé is available in English and Portuguese.",
+    pt: "Escolha o canal que for mais prático para você. O currículo está em português e em inglês.",
+    en: "Pick whichever channel works best for you. My résumé is available in English and Portuguese.",
   } satisfies Localized,
   talk: {
     pt: "Marcar uma conversa",
     en: "Schedule a chat",
   } satisfies Localized,
-  others: {
-    pt: "Ou me encontre em",
-    en: "Or find me on",
-  } satisfies Localized,
+};
+
+// Canais de contato: cada um com o que o recrutador encontra ali.
+export const contactCopy = {
+  quickTitle: { pt: "Acesso rápido", en: "Quick access" } satisfies Localized,
+  channelsTitle: { pt: "Onde me encontrar", en: "Where to find me" } satisfies Localized,
+  notes: {
+    whatsapp: {
+      pt: "Mensagem direta, para um contato mais rápido.",
+      en: "Direct message, for a quicker conversation.",
+    } satisfies Localized,
+    email: {
+      pt: "Para propostas, entrevistas e envio de testes técnicos.",
+      en: "For offers, interviews and technical assessments.",
+    } satisfies Localized,
+    linkedin: {
+      pt: "Perfil profissional com a minha experiência e formação.",
+      en: "Professional profile with my experience and education.",
+    } satisfies Localized,
+    github: {
+      pt: "O código de todos os projetos deste portfólio.",
+      en: "The source code of every project in this portfolio.",
+    } satisfies Localized,
+  },
+  actions: {
+    whatsapp: { pt: "Abrir conversa", en: "Open chat" } satisfies Localized,
+    email: { pt: "Escrever e-mail", en: "Write an email" } satisfies Localized,
+    linkedin: { pt: "Ver perfil", en: "View profile" } satisfies Localized,
+    github: { pt: "Ver repositórios", en: "View repositories" } satisfies Localized,
+  },
+  whatsappButton: { pt: "Chamar no WhatsApp", en: "Message on WhatsApp" } satisfies Localized,
+  copy: { pt: "Copiar", en: "Copy" } satisfies Localized,
+  copied: { pt: "Copiado", en: "Copied" } satisfies Localized,
 };
 
 export const footerCopy = {

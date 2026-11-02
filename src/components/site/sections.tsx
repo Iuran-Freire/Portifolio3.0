@@ -1,13 +1,14 @@
 import type React from "react";
 import Image from "next/image";
-import { Download, Mail } from "lucide-react";
+import { Download, Mail, MessageCircle } from "lucide-react";
 import { pick, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { contacts, timeline } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
-import { deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
+import { contactCopy, deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
 import { ProjectGallery } from "./project-gallery";
+import { ContactChannels } from "./contact-channels";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
@@ -164,39 +165,42 @@ export function ContactSection({ locale, d }: Props) {
         <p data-deploy-item className="mt-6 max-w-[56ch] text-ink-muted">
           {t(deployCopy.body)}
         </p>
-        <div data-deploy-item className="mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href={mailto}
-            className="inline-flex items-center gap-2 rounded-full bg-signal px-7 py-4 text-lg font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
-          >
-            <Mail className="size-5" aria-hidden />
-            {t(deployCopy.talk)}
-          </a>
-          <a
-            href={d.resume.file}
-            download
-            className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-7 py-4 text-lg font-semibold transition-colors hover:border-signal hover:text-signal"
-          >
-            <Download className="size-5" aria-hidden />
-            {d.actions.downloadResume}
-          </a>
+        {/* Acesso rápido: as três ações mais comuns de um recrutador */}
+        <div data-deploy-item className="mt-10">
+          <h3 className="label-mono mb-4 text-ink-muted">{t(contactCopy.quickTitle)}</h3>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={mailto}
+              className="inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3.5 font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
+            >
+              <Mail className="size-5" aria-hidden />
+              {t(deployCopy.talk)}
+            </a>
+            <a
+              href={contacts.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3.5 font-semibold transition-colors hover:border-signal hover:text-signal"
+            >
+              <MessageCircle className="size-5" aria-hidden />
+              {t(contactCopy.whatsappButton)}
+            </a>
+            <a
+              href={d.resume.file}
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3.5 font-semibold transition-colors hover:border-signal hover:text-signal"
+            >
+              <Download className="size-5" aria-hidden />
+              {d.actions.downloadResume}
+            </a>
+          </div>
         </div>
-        <p data-deploy-item className="mt-10 text-sm text-ink-muted">
-          {t(deployCopy.others)}{" "}
-          <a className="text-ink underline underline-offset-4 hover:text-signal" href={contacts.linkedin} target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          ,{" "}
-          <a className="text-ink underline underline-offset-4 hover:text-signal" href={contacts.github} target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>{" "}
-          {locale === "pt" ? "e" : "and"}{" "}
-          <a className="text-ink underline underline-offset-4 hover:text-signal" href={contacts.whatsapp} target="_blank" rel="noopener noreferrer">
-            WhatsApp
-          </a>
-          .
-        </p>
-        <p className="mt-2 font-mono text-sm text-ink-muted">{contacts.email}</p>
+
+        {/* Os quatro canais, cada um no seu cartão */}
+        <div className="mt-12">
+          <h3 data-deploy-item className="label-mono mb-4 text-ink-muted">{t(contactCopy.channelsTitle)}</h3>
+          <ContactChannels locale={locale} />
+        </div>
       </div>
     </section>
   );
