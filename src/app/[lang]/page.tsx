@@ -4,6 +4,7 @@ import { hasLocale } from "@/i18n/config";
 import { Header } from "@/components/site/header";
 import { SideMap } from "@/components/site/side-map";
 import { Motion } from "@/components/site/motion";
+import { Intro } from "@/components/site/intro";
 import {
   ContactSection,
   Footer,
@@ -26,6 +27,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       >
         {d.skipToContent}
       </a>
+      <Intro />
       <Motion />
       <Header {...props} />
       <SideMap d={d} />

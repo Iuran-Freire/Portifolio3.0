@@ -4,6 +4,7 @@ import { Anton, Archivo, IBM_Plex_Mono } from "next/font/google";
 import { getDictionary } from "@/i18n/dictionaries";
 import { hasLocale, locales } from "@/i18n/config";
 import { siteUrl } from "@/lib/site";
+import { introScript } from "@/lib/intro-script";
 import "lenis/dist/lenis.css";
 import "../globals.css";
 
@@ -72,7 +73,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeScript + introScript }} />
       </head>
       <body className="min-h-dvh">{children}</body>
     </html>

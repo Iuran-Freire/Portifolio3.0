@@ -202,27 +202,46 @@ header a[data-stage-link][data-current] {
   color: var(--signal);
 }
 
-/* ---------- Abertura do topo: o único momento orquestrado ---------- */
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
+/* ---------- Abertura (componente Intro) ---------- */
+.intro-curtain {
+  display: none;
+}
+.intro-pending:not(.intro-seen) .intro-curtain,
+.intro-running:not(.intro-seen) .intro-curtain {
+  display: flex;
+}
+/* Enquanto a abertura não começa, o topo nasce escondido */
+.intro-pending [data-intro-title],
+.intro-pending [data-intro-lead],
+.intro-pending [data-intro-item],
+.intro-pending [data-intro-photo],
+.intro-pending header {
+  opacity: 0;
+}
+/* Rede de segurança: se o JavaScript falhar, tudo aparece em 4 s */
+@keyframes intro-failsafe {
   to {
     opacity: 1;
-    transform: none;
   }
 }
-[data-reveal] {
-  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(var(--reveal-order, 0) * 120ms);
+@keyframes intro-curtain-failsafe {
+  to {
+    visibility: hidden;
+  }
+}
+.intro-pending [data-intro-title],
+.intro-pending [data-intro-lead],
+.intro-pending [data-intro-item],
+.intro-pending [data-intro-photo],
+.intro-pending header {
+  animation: intro-failsafe 0s 4s forwards;
+}
+.intro-pending .intro-curtain {
+  animation: intro-curtain-failsafe 0s 4s forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  [data-reveal] {
-    animation: none;
   }
 }

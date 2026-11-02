@@ -87,21 +87,25 @@ export function Motion() {
       gsap.utils.toArray<HTMLElement>("[data-gallery]").forEach((gallery) => {
         gsap.from(gallery.querySelectorAll("[data-tile]"), {
           opacity: 0,
-          y: 60,
-          rotateX: desktop ? 8 : 0,
-          transformPerspective: 900,
+          y: 80,
+          scale: 0.94,
+          rotateX: desktop ? 12 : 0,
+          transformPerspective: 1000,
           transformOrigin: "50% 100%",
-          duration: 0.9,
+          clipPath: "inset(30% 0% 0% 0% round 16px)",
+          duration: 1.1,
           ease: "expo.out",
-          stagger: 0.08,
-          clearProps: "transform",
-          scrollTrigger: { trigger: gallery, start: "top 85%", once: true },
+          stagger: { each: 0.09, from: "start" },
+          clearProps: "transform,clipPath",
+          scrollTrigger: { trigger: gallery, start: "top 82%", once: true },
         });
       });
 
       // Números contam a partir de zero.
       gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
-        const match = el.textContent?.match(/^(\D*)(\d+)(.*)$/);
+        // Guarda o valor original: se a animação for recriada, não parte de um texto já zerado.
+        el.dataset.countValue ??= el.textContent ?? "";
+        const match = el.dataset.countValue.match(/^(\D*)(\d+)(.*)$/);
         if (!match) return;
         const [, prefix, digits, suffix] = match;
         const state = { value: 0 };

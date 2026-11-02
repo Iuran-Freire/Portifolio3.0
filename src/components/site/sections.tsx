@@ -30,34 +30,32 @@ export function HomeSection({ locale, d }: Props) {
         width={240}
         height={300}
         priority
+        data-intro-item
         className="mb-8 size-20 rounded-full object-cover object-top ring-2 ring-signal/60 lg:hidden"
       />
       <h1
         id="home-title"
-        data-reveal
+        data-intro-title
         className="font-display max-w-[16ch] text-[clamp(3rem,6vw,6.25rem)] leading-[0.95]"
       >
         {t(sourceCopy.title)}{" "}
         <span className="text-signal">{t(sourceCopy.titleAccent)}</span>
       </h1>
       <p
-        data-reveal
-        style={{ "--reveal-order": 1 } as React.CSSProperties}
+        data-intro-lead
         className="mt-8 max-w-[62ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted"
       >
         {t(sourceCopy.lead)}
       </p>
       <p
-        data-reveal
-        style={{ "--reveal-order": 2 } as React.CSSProperties}
+        data-intro-item
         className="mt-4 max-w-[62ch] text-[length:var(--step-1)] font-medium"
       >
         {t(sourceCopy.seeking)}
       </p>
 
       <div
-        data-reveal
-        style={{ "--reveal-order": 3 } as React.CSSProperties}
+        data-intro-item
         className="mt-10 flex flex-wrap items-center gap-3"
       >
         <a
@@ -78,7 +76,7 @@ export function HomeSection({ locale, d }: Props) {
       </div>
 
       {/* No desktop, o retrato se funde ao fundo com um brilho vermelho atrás */}
-      <figure data-reveal style={{ "--reveal-order": 2 } as React.CSSProperties} className="relative hidden lg:block">
+      <figure data-intro-photo className="relative hidden lg:block">
         <div aria-hidden className="absolute inset-x-[10%] top-[18%] bottom-[8%] rounded-full bg-signal/25 blur-3xl" />
         <Image
           src="/iuran-freire.webp"
