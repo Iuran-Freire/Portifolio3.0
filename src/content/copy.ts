@@ -71,52 +71,6 @@ export const analysisCopy = {
   } satisfies Localized,
 };
 
-// Perguntas que um recrutador faz. Só entram respostas confirmadas pelo Iuran.
-// Pendentes: disponibilidade de horário, modelo de trabalho e data de início.
-export const faqCopy = {
-  title: {
-    pt: "Perguntas de recrutador",
-    en: "Questions recruiters ask",
-  } satisfies Localized,
-  items: [
-    {
-      q: { pt: "Que vaga você procura?", en: "What role are you looking for?" },
-      a: {
-        pt: "Estágio ou vaga júnior em dados, como analista ou desenvolvedor de Power BI, ou em desenvolvimento de sistemas.",
-        en: "An internship or junior role in data, as a Power BI analyst or developer, or in software development.",
-      },
-    },
-    {
-      q: { pt: "Onde você mora?", en: "Where are you based?" },
-      a: { pt: "Em Manaus, AM.", en: "Manaus, Amazonas, Brazil." },
-    },
-    {
-      q: { pt: "Você ainda estuda?", en: "Are you still studying?" },
-      a: {
-        pt: "Sim. Curso Análise e Desenvolvimento de Sistemas na FAMETRO, no período noturno. Antes, cursei Engenharia da Computação até o 4º período e me formei técnico em Automação Industrial.",
-        en: "Yes. I study Systems Analysis and Development at FAMETRO, in the evening. Before that I took Computer Engineering up to the 4th semester and earned an Industrial Automation technical degree.",
-      },
-    },
-    {
-      q: { pt: "Como está seu inglês?", en: "How is your English?" },
-      a: {
-        pt: "Básico. Leio documentação técnica no dia a dia e sigo estudando.",
-        en: "Basic. I read technical documentation every day and keep studying.",
-      },
-    },
-    {
-      q: {
-        pt: "Por que sair da indústria?",
-        en: "Why leave manufacturing?",
-      },
-      a: {
-        pt: "Os melhores momentos do meu trabalho foram construindo software para resolver problemas da linha. Quero fazer isso em tempo integral, num time de tecnologia.",
-        en: "The best parts of my work have been building software to fix problems on the line. I want to do that full time, on a tech team.",
-      },
-    },
-  ] satisfies { q: Localized; a: Localized }[],
-};
-
 export const deployCopy = {
   label: {
     pt: "Pronto para produção",

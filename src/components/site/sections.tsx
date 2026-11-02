@@ -1,3 +1,4 @@
+import type React from "react";
 import { ArrowUpRight, Download, Mail } from "lucide-react";
 import { pick, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -7,13 +8,11 @@ import { skillGroups } from "@/content/skills";
 import {
   analysisCopy,
   deployCopy,
-  faqCopy,
   footerCopy,
   ingestionCopy,
   processingCopy,
   sourceCopy,
 } from "@/content/copy";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProjectCase, ProjectCompact } from "./project-case";
 import { Stage, StageNode } from "./stages";
 
@@ -29,16 +28,17 @@ export function SourceSection({ locale, d }: Props) {
       <StageNode index={1} className="top-16 md:top-28" />
       <h1
         id="source-title"
+        data-reveal
         className="font-wide max-w-[20ch] text-[clamp(2.25rem,5.2vw,4.75rem)] leading-[1.03] font-extrabold tracking-tight"
       >
         {t(sourceCopy.title)}
       </h1>
-      <p className="mt-8 max-w-[62ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted">
+      <p data-reveal style={{ "--reveal-order": 1 } as React.CSSProperties} className="mt-8 max-w-[62ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted">
         {t(sourceCopy.lead)}
       </p>
-      <p className="mt-4 max-w-[62ch] text-[length:var(--step-1)] font-medium">{t(sourceCopy.seeking)}</p>
+      <p data-reveal style={{ "--reveal-order": 2 } as React.CSSProperties} className="mt-4 max-w-[62ch] text-[length:var(--step-1)] font-medium">{t(sourceCopy.seeking)}</p>
 
-      <div className="mt-10 flex flex-wrap items-center gap-3">
+      <div data-reveal style={{ "--reveal-order": 3 } as React.CSSProperties} className="mt-10 flex flex-wrap items-center gap-3">
         <a
           href="#ingestion"
           className="rounded-full bg-cobalt px-6 py-3 font-semibold text-cobalt-ink transition-transform hover:-translate-y-0.5"
@@ -171,26 +171,6 @@ export function AnalysisSection({ locale, d }: Props) {
         </div>
       </div>
     </Stage>
-  );
-}
-
-// Perguntas de recrutador (fora da sequência do pipeline).
-export function FaqSection({ locale }: Props) {
-  const t = tr(locale);
-  return (
-    <section aria-labelledby="faq-title" className="py-24">
-      <h2 id="faq-title" className="font-wide text-[length:var(--step-2)] font-bold">
-        {t(faqCopy.title)}
-      </h2>
-      <Accordion className="mt-8 max-w-3xl">
-        {faqCopy.items.map((item, i) => (
-          <AccordionItem key={item.q.pt} value={`q${i}`} className="border-grid">
-            <AccordionTrigger className="py-5 text-base font-semibold hover:no-underline">{t(item.q)}</AccordionTrigger>
-            <AccordionContent className="text-base text-ink-muted">{t(item.a)}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </section>
   );
 }
 

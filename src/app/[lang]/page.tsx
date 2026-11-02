@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import { getDictionary } from "@/i18n/dictionaries";
 import { hasLocale } from "@/i18n/config";
 import { Header } from "@/components/site/header";
+import { Pipeline } from "@/components/site/pipeline";
 import {
   AnalysisSection,
   DeploySection,
-  FaqSection,
   Footer,
   IngestionSection,
   ProcessingSection,
@@ -28,13 +28,11 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </a>
       <Header {...props} />
       <main className="relative mx-auto max-w-6xl px-6 md:pl-24">
-        {/* Trilho do pipeline: a tarefa 5 anima o pacote de dados sobre ele */}
-        <div aria-hidden data-pipeline-rail className="absolute top-0 bottom-0 left-[3.625rem] hidden w-px bg-cobalt/45 md:block" />
+        <Pipeline />
         <SourceSection {...props} />
         <IngestionSection {...props} />
         <ProcessingSection {...props} />
         <AnalysisSection {...props} />
-        <FaqSection {...props} />
         <DeploySection {...props} />
       </main>
       <Footer {...props} />

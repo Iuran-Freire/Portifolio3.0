@@ -145,8 +145,69 @@
   font-stretch: 125%;
 }
 
+/* ---------- Pipeline ---------- */
+
+/* Sem animação, o traço aparece inteiro e os marcadores ficam acesos. */
+[data-rail-fill] {
+  opacity: 0.6;
+}
+[data-animated] [data-rail-fill] {
+  opacity: 1;
+}
+
+[data-stage-node] {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+[data-stage-node][data-active] {
+  background-color: var(--cobalt);
+  color: var(--cobalt-ink);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--cobalt) 22%, transparent);
+}
+
+/* O pacote mostra só a forma da etapa atual. */
+.packet-glyph {
+  opacity: 0;
+  transform: scale(0.6) rotate(-20deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+[data-packet][data-stage="1"] [data-glyph="1"],
+[data-packet][data-stage="2"] [data-glyph="2"],
+[data-packet][data-stage="3"] [data-glyph="3"],
+[data-packet][data-stage="4"] [data-glyph="4"],
+[data-packet][data-stage="5"] [data-glyph="5"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Abertura do topo: o único momento orquestrado ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+[data-reveal] {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--reveal-order, 0) * 120ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  [data-reveal] {
+    animation: none;
+  }
+  .packet-glyph {
+    transition: none;
   }
 }
