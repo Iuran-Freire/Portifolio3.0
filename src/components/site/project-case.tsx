@@ -27,7 +27,7 @@ export function ProjectCard({
   d: Dictionary;
 }) {
   const t = <T,>(v: { pt: T; en: T }) => pick(v, locale);
-  const hasStory = Boolean(project.problem || project.challenges || project.results || project.learned);
+  const hasStory = Boolean(project.context || project.problem || project.challenges || project.results || project.learned);
 
   return (
     <article
@@ -67,9 +67,14 @@ export function ProjectCard({
         )}
       </div>
 
-      <div className={`mt-10 grid gap-10 ${hasStory || project.flow ? "lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]" : ""}`}>
+      <div className={`mt-10 grid gap-10 ${hasStory || project.flow || project.skills ? "lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]" : ""}`}>
         {/* A história: problema, dificuldade, o que foi feito, resultado, aprendizado */}
         <div className="space-y-8">
+          {project.context && (
+            <Block label={t(cardLabels.context)}>
+              <p>{t(project.context)}</p>
+            </Block>
+          )}
           {project.problem && (
             <Block label={t(cardLabels.problem)}>
               <p>{t(project.problem)}</p>
@@ -90,6 +95,15 @@ export function ProjectCard({
           {project.built && (
             <Block label={t(cardLabels.built)}>
               <p>{t(project.built)}</p>
+              {project.features && (
+                <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                  {project.features.map((f) => (
+                    <li key={f.pt} className="rounded-lg border border-grid bg-paper/50 px-3.5 py-3 text-[0.95rem] leading-snug">
+                      {t(f)}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </Block>
           )}
           {project.results && (
@@ -131,6 +145,19 @@ export function ProjectCard({
                   </li>
                 ))}
               </ol>
+            </div>
+          )}
+          {project.skills && (
+            <div>
+              <h4 className="label-mono mb-3 text-ink-muted">{t(cardLabels.skills)}</h4>
+              <ul className="space-y-2">
+                {project.skills.map((skill) => (
+                  <li key={skill.pt} className="flex gap-3 text-[0.95rem]">
+                    <span aria-hidden className="mt-2 size-1.5 shrink-0 rotate-45 bg-signal" />
+                    <span>{t(skill)}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
           <div className="flex flex-wrap gap-2">

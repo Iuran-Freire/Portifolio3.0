@@ -24,33 +24,62 @@ export const contacts = {
 };
 
 // Trajetória: a vivência industrial aparece como experiência, não como objetivo.
-export const timeline: { period: Localized; text: Localized }[] = [
+// A história do "sem computador" ao desenvolvimento foi contada pelo Iuran.
+export const timeline: { period: Localized; title: Localized; text: Localized }[] = [
+  {
+    period: { pt: "O começo", en: "The start" },
+    title: { pt: "Curiosidade pelo celular", en: "Curiosity on a phone" },
+    text: {
+      pt: "Sem computador em casa, eu acompanhava tecnologia por vídeos e explorava tudo o que dava para fazer pelo celular.",
+      en: "With no computer at home, I followed technology through videos and explored everything I could do on a phone.",
+    },
+  },
   {
     period: { pt: "Formação técnica", en: "Technical degree" },
+    title: { pt: "Técnico em Automação Industrial", en: "Industrial Automation technician" },
     text: {
-      pt: "Técnico em Automação Industrial (FUCAPI).",
-      en: "Industrial Automation technician (FUCAPI).",
+      pt: "Formação técnica na FUCAPI, minha base em automação e instrumentação industrial.",
+      en: "Technical training at FUCAPI, my foundation in industrial automation and instrumentation.",
     },
   },
   {
     period: { pt: "2022–2023", en: "2022–2023" },
+    title: { pt: "Assistente de instrumentação", en: "Instrumentation assistant" },
     text: {
-      pt: "Assistente de instrumentação na Brasil Norte Bebidas.",
-      en: "Instrumentation assistant at Brasil Norte Bebidas.",
+      pt: "Na Brasil Norte Bebidas, apoiei rotinas de instrumentação e a organização de equipamentos no chão de fábrica.",
+      en: "At Brasil Norte Bebidas, I supported instrumentation routines and equipment organization on the factory floor.",
+    },
+  },
+  {
+    period: { pt: "Graduação", en: "University" },
+    title: { pt: "Engenharia da Computação", en: "Computer Engineering" },
+    text: {
+      pt: "Cursei Engenharia da Computação na FAMETRO até o 4º período.",
+      en: "I studied Computer Engineering at FAMETRO up to the 4th semester.",
+    },
+  },
+  {
+    period: { pt: "2024", en: "2024" },
+    title: { pt: "O primeiro computador, no estágio", en: "My first computer, at my internship" },
+    text: {
+      pt: "No estágio na Inventus Power, tive contato de verdade com um computador pela primeira vez. Direcionei o estágio para planilhas, dashboards de Power BI e o fluxo de dados da qualidade.",
+      en: "At my Inventus Power internship, I worked with a computer for real for the first time. I steered the internship toward spreadsheets, Power BI dashboards and the quality team's data flow.",
     },
   },
   {
     period: { pt: "2024–2026", en: "2024–2026" },
+    title: { pt: "Dos dados ao software", en: "From data to software" },
     text: {
-      pt: "Estágio na Inventus Power: construí dashboards de Power BI e um sistema web de inspeções.",
-      en: "Internship at Inventus Power: built Power BI dashboards and a web inspection system.",
+      pt: "Analisando dados, comecei a construir os sistemas que os geram: primeiro o sistema da qualidade, meu projeto mais difícil, e depois o Valida Laser, hoje em uso na linha.",
+      en: "While analyzing data, I started building the systems that produce it: first the quality system, my hardest project, and then Valida Laser, now in use on the line.",
     },
   },
   {
     period: { pt: "Hoje", en: "Now" },
+    title: { pt: "Rumo à primeira vaga em tecnologia", en: "Heading for my first tech role" },
     text: {
-      pt: "Inspetor de qualidade na Inventus Power e estudante de Análise e Desenvolvimento de Sistemas (FAMETRO), em busca da primeira vaga em tecnologia.",
-      en: "Quality inspector at Inventus Power and Systems Analysis and Development student (FAMETRO), looking for a first role in tech.",
+      pt: "Sou inspetor de qualidade na Inventus Power e estudo Análise e Desenvolvimento de Sistemas na FAMETRO, à noite. Procuro estágio ou vaga júnior em dados ou desenvolvimento.",
+      en: "I'm a quality inspector at Inventus Power and study Systems Analysis and Development at FAMETRO in the evenings. I'm looking for an internship or junior role in data or development.",
     },
   },
 ];

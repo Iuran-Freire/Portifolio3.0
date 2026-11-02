@@ -91,11 +91,19 @@ export function JourneySection({ locale, d }: Props) {
   const t = tr(locale);
   return (
     <Stage id="journey" index={3} name={d.nav.journey} title={t(journeyCopy.title)} intro={t(journeyCopy.intro)}>
-      <ol className="grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
-        {timeline.map((item) => (
-          <li key={item.period.pt} data-fade className="border-l border-grid pl-5">
+      <ol className="relative max-w-3xl">
+        <span aria-hidden className="absolute top-2 bottom-2 left-[0.3125rem] w-px bg-grid" />
+        {timeline.map((item, i) => (
+          <li key={item.period.pt} data-fade className="relative pb-10 pl-10 last:pb-0">
+            <span
+              aria-hidden
+              className={`absolute top-1.5 left-0 size-[0.6875rem] rounded-full border-2 ${
+                i === timeline.length - 1 ? "border-signal bg-signal" : "border-signal bg-paper"
+              }`}
+            />
             <p className="label-mono text-signal">{t(item.period)}</p>
-            <p className="mt-2">{t(item.text)}</p>
+            <h3 className="font-display mt-2 text-[length:var(--step-2)] leading-tight">{t(item.title)}</h3>
+            <p className="mt-2 max-w-[60ch] text-ink-muted">{t(item.text)}</p>
           </li>
         ))}
       </ol>

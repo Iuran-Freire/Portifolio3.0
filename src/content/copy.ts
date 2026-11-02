@@ -41,22 +41,24 @@ export const cardLabels = {
     dashboard: { pt: "Dashboard público", en: "Public dashboard" },
     "this-site": { pt: "Este site", en: "This site" },
   } satisfies Record<string, Localized>,
+  context: { pt: "O contexto", en: "The context" } satisfies Localized,
   problem: { pt: "O problema", en: "The problem" } satisfies Localized,
   challenges: { pt: "A maior dificuldade", en: "The hardest part" } satisfies Localized,
   built: { pt: "O que construí", en: "What I built" } satisfies Localized,
   results: { pt: "Resultado", en: "Outcome" } satisfies Localized,
   learned: { pt: "O que aprendi", en: "What I learned" } satisfies Localized,
   flow: { pt: "Como o dado passa pelo sistema", en: "How data moves through it" } satisfies Localized,
+  skills: { pt: "O que este projeto demonstra", en: "What this project shows" } satisfies Localized,
 };
 
 export const journeyCopy = {
   title: {
-    pt: "De técnico em automação a desenvolvedor",
-    en: "From automation technician to developer",
+    pt: "Do celular ao primeiro sistema em produção",
+    en: "From a phone screen to my first system in production",
   } satisfies Localized,
   intro: {
-    pt: "Aprendi a programar resolvendo problemas da linha de produção, com a IA como apoio para entender cada linguagem e cada camada do sistema.",
-    en: "I learned to code by solving production line problems, using AI as a partner to understand each language and each layer of a system.",
+    pt: "Cresci sem computador em casa. Minha curiosidade por tecnologia vinha de vídeos e do que dava para fazer pelo celular. O primeiro contato de verdade com um computador veio há cerca de dois anos, no estágio. A partir dali, cada demanda do trabalho virou motivo para aprender: primeiro planilhas e dashboards, depois análise de dados e, por fim, desenvolvimento de software. Ao longo do caminho, usei a IA como apoio para entender cada linguagem e cada camada de um sistema.",
+    en: "I grew up without a computer at home. My curiosity about technology came from videos and whatever I could do on a phone. My first real contact with a computer came about two years ago, during my internship. From then on, every work demand became a reason to learn: first spreadsheets and dashboards, then data analysis and, finally, software development. Along the way, I used AI as a learning partner to understand each language and each layer of a system.",
   } satisfies Localized,
   toolsTitle: {
     pt: "Ferramentas que uso",
