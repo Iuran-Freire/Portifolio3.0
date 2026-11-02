@@ -18,7 +18,7 @@ const pt = {
     deploy: "Deploy",
   },
   language: { label: "Idioma", switchTo: "English" },
-  theme: { toLight: "Usar tema claro", toDark: "Usar tema escuro" },
+  theme: { toggle: "Alternar entre tema claro e escuro" },
   actions: {
     seeProjects: "Ver projetos",
     downloadResume: "Baixar currículo",
@@ -50,7 +50,7 @@ const en: Dictionary = {
     deploy: "Deploy",
   },
   language: { label: "Language", switchTo: "Português" },
-  theme: { toLight: "Use light theme", toDark: "Use dark theme" },
+  theme: { toggle: "Switch between light and dark theme" },
   actions: {
     seeProjects: "See projects",
     downloadResume: "Download résumé",

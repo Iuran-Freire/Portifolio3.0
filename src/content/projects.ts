@@ -33,8 +33,8 @@ export const projects: Project[] = [
     featured: true,
     title: { pt: "Valida Laser", en: "Valida Laser" },
     summary: {
-      pt: "App que confere, pela câmera do celular, se a série gravada na peça bate com o código Data Matrix — mesmo sem internet.",
-      en: "An app that checks, from a phone camera, whether the serial printed on a part matches its Data Matrix code — even offline.",
+      pt: "App que confere, pela câmera do celular, se a série gravada na peça bate com o código Data Matrix, mesmo sem internet.",
+      en: "An app that checks, from a phone camera, whether the serial printed on a part matches its Data Matrix code, even offline.",
     },
     problem: {
       pt: "Cada validação (três peças) era feita a olho: ler o QR Code, ler a série serigrafada, comparar caractere por caractere e lançar. Levava cerca de 10 minutos, e letras parecidas como O/0 e I/1 geravam erro.",
