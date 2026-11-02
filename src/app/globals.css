@@ -145,6 +145,12 @@
   font-stretch: 125%;
 }
 
+/* Etapa atual no cabeçalho */
+header a[data-current] {
+  color: var(--ink);
+  background-color: color-mix(in oklab, var(--cobalt) 14%, transparent);
+}
+
 /* ---------- Pipeline ---------- */
 
 /* Sem animação, o traço aparece inteiro e os marcadores ficam acesos. */

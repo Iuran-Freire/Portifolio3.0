@@ -3,6 +3,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { hasLocale } from "@/i18n/config";
 import { Header } from "@/components/site/header";
 import { Pipeline } from "@/components/site/pipeline";
+import { Motion } from "@/components/site/motion";
 import {
   AnalysisSection,
   DeploySection,
@@ -26,6 +27,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       >
         {d.skipToContent}
       </a>
+      <Motion />
       <Header {...props} />
       <main className="relative mx-auto max-w-6xl px-6 md:pl-24">
         <Pipeline />

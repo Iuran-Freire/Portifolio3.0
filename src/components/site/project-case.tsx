@@ -16,8 +16,9 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
 
   return (
     <article
+      data-card
       aria-labelledby={`${project.id}-title`}
-      className="rounded-2xl border border-grid bg-surface/80 p-6 backdrop-blur-sm md:p-10"
+      className="origin-top rounded-2xl border border-grid bg-surface p-6 will-change-transform md:p-10"
     >
       <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="max-w-[60ch]">
@@ -28,7 +29,7 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
         </div>
         {project.metric && (
           <p className="min-w-[12rem]">
-            <span className="block font-mono text-[length:var(--step-4)] leading-none text-cobalt">
+            <span data-count className="block font-mono text-[length:var(--step-4)] leading-none text-cobalt">
               {project.metric.value}
             </span>
             <span className="mt-2 block text-sm text-ink-muted">
@@ -115,7 +116,7 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
 export function ProjectCompact({ project, locale, d }: { project: Project; locale: Locale; d: Dictionary }) {
   const t = <T,>(v: { pt: T; en: T }) => pick(v, locale);
   return (
-    <article className="flex flex-col gap-3 border-t border-grid pt-6">
+    <article data-fade className="flex flex-col gap-3 border-t border-grid pt-6">
       <h3 className="font-wide text-[length:var(--step-1)] font-bold">{t(project.title)}</h3>
       <p className="text-ink-muted">{t(project.summary)}</p>
       <p className="font-mono text-xs text-ink-muted">{project.stack.join(", ")}</p>

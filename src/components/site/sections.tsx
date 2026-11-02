@@ -95,7 +95,7 @@ export function ProcessingSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
     <Stage id="processing" index={3} name={d.nav.processing} title={t(processingCopy.title)} intro={t(processingCopy.intro)}>
-      <div className="space-y-12">
+      <div data-stack-group className="space-y-12">
         {projectsByStage("processing").map((p) => (
           <ProjectCase key={p.id} project={p} locale={locale} d={d} />
         ))}
@@ -116,7 +116,7 @@ export function AnalysisSection({ locale, d }: Props) {
       {dashboards?.links && (
         <ul className="grid gap-6 md:grid-cols-2">
           {dashboards.links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} data-fade>
               <a
                 href={link.href}
                 target="_blank"
@@ -134,7 +134,7 @@ export function AnalysisSection({ locale, d }: Props) {
         </ul>
       )}
 
-      <div className="mt-20">
+      <div data-fade className="mt-20">
         <h3 className="mb-6 text-sm font-semibold text-ink-muted">{t(analysisCopy.numbersTitle)}</h3>
         <dl className="grid border-t border-grid sm:grid-cols-2 lg:grid-cols-4">
           {metrics.map((m) => (
@@ -143,23 +143,23 @@ export function AnalysisSection({ locale, d }: Props) {
                 {t(m.project)}: {t(m.label)}
                 {m.estimated && ` (${d.estimated})`}
               </dt>
-              <dd className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-cobalt">{m.value}</dd>
+              <dd data-count className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-cobalt">{m.value}</dd>
             </div>
           ))}
           <div className="flex flex-col border-b border-grid py-6 sm:pr-6">
             <dt className="text-sm text-ink-muted">{t(analysisCopy.systemsBuilt)}</dt>
-            <dd className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-cobalt">{systemsCount}</dd>
+            <dd data-count className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-cobalt">{systemsCount}</dd>
           </div>
           <div className="flex flex-col border-b border-grid py-6">
             <dt className="text-sm text-ink-muted">{t(analysisCopy.publicDashboards)}</dt>
-            <dd className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-cobalt">
+            <dd data-count className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-cobalt">
               {dashboards?.links?.length ?? 0}
             </dd>
           </div>
         </dl>
       </div>
 
-      <div className="mt-20">
+      <div data-fade className="mt-20">
         <h3 className="mb-6 text-sm font-semibold text-ink-muted">{t(analysisCopy.skillsTitle)}</h3>
         <div className="grid gap-8 md:grid-cols-2">
           {skillGroups.map((group) => (
@@ -182,18 +182,19 @@ export function DeploySection({ locale, d }: Props) {
     <section id="deploy" aria-labelledby="deploy-title" className="relative scroll-mt-24 py-24 md:py-32">
       <StageNode index={5} />
       <div className="rounded-3xl border border-cobalt/40 bg-surface/80 p-8 backdrop-blur-sm md:p-14">
-        <p className="inline-flex items-center gap-2 rounded-md border border-valid/50 px-3 py-1 font-mono text-xs text-valid">
+        <p data-print className="inline-flex items-center gap-2 rounded-md border border-valid/50 px-3 py-1 font-mono text-xs text-valid">
           <span aria-hidden className="size-1.5 rounded-full bg-valid" />
           {t(deployCopy.label)}
         </p>
         <h2
           id="deploy-title"
+          data-split
           className="font-wide mt-6 max-w-[18ch] text-[length:var(--step-4)] leading-[1.02] font-extrabold tracking-tight"
         >
           {t(deployCopy.title)}
         </h2>
-        <p className="mt-6 max-w-[56ch] text-ink-muted">{t(deployCopy.body)}</p>
-        <div className="mt-10 flex flex-wrap items-center gap-3">
+        <p data-deploy-item className="mt-6 max-w-[56ch] text-ink-muted">{t(deployCopy.body)}</p>
+        <div data-deploy-item className="mt-10 flex flex-wrap items-center gap-3">
           <a
             href={mailto}
             className="inline-flex items-center gap-2 rounded-full bg-cobalt px-7 py-4 text-lg font-semibold text-cobalt-ink transition-transform hover:-translate-y-0.5"
@@ -210,7 +211,7 @@ export function DeploySection({ locale, d }: Props) {
             {d.actions.downloadResume}
           </a>
         </div>
-        <p className="mt-10 text-sm text-ink-muted">
+        <p data-deploy-item className="mt-10 text-sm text-ink-muted">
           {t(deployCopy.others)}{" "}
           <a className="text-ink underline underline-offset-4 hover:text-cobalt" href={contacts.linkedin} target="_blank" rel="noopener noreferrer">
             LinkedIn

@@ -43,11 +43,12 @@ export function Stage({
       </p>
       <h2
         id={`${id}-title`}
+        data-split
         className="font-wide max-w-[22ch] text-[length:var(--step-3)] leading-[1.05] font-bold tracking-tight md:text-[length:var(--step-4)]"
       >
         {title}
       </h2>
-      {intro && <p className="mt-6 max-w-[62ch] text-ink-muted">{intro}</p>}
+      {intro && <p data-fade className="mt-6 max-w-[62ch] text-ink-muted">{intro}</p>}
       <div className="mt-14">{children}</div>
     </section>
   );
