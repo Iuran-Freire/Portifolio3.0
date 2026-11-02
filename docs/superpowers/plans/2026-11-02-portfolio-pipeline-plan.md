@@ -95,3 +95,15 @@ Cada tarefa termina com typecheck, lint e build passando, e vira um commit.
 - Respostas das "Perguntas de recrutador" (disponibilidade de horário, presencial/híbrido/remoto, cidade, quando pode começar, nível de inglês).
 - Recomendação real para depoimento (opcional).
 - Capturas de tela/GIFs do Valida Laser e do FPY (opcional).
+
+## 5. Mudanças de direção (2026-11-02, depois das tarefas 1–5)
+
+Decididas pelo Iuran ao ver o site no navegador. Valem sobre o que está acima.
+
+- **Identidade visual:** a do portfólio atual dele — fundo `#111110`, texto `#EFEEE7`, vermelho `#EF554B` (token `--signal`), títulos em **Anton maiúsculo** (o topo em duas cores, branco e vermelho), rótulos em mono maiúscula espaçada, logo "IF." com ponto vermelho e navegação numerada 01–05. A paleta "folha de dados" azul foi abandonada; o tema claro acompanha a nova paleta.
+- **Perguntas de recrutador:** removidas. O portfólio mostra o que ele constrói; dados práticos (disponibilidade, inglês etc.) ficam no currículo.
+- **3D no topo:** testado e descartado (a figura não comunicava). O "impacto" pedido era de **transições fluidas entre seções**.
+- **Transições (implementadas):** rolagem suave com Lenis integrada ao GSAP; títulos revelados por máscara (SplitText); estudos de caso que abrem e se empilham no Processamento; caminho do dado acendendo com a rolagem; números que contam; brilho de fundo que muda por etapa; etiqueta final "impressa".
+- **Indicador de rolagem:** o trilho vertical com o pacote de dados saiu. No lugar, um **mapa lateral** à direita (marcas finas por etapa, a atual em vermelho com o nome, clicáveis), que também marca a etapa atual no cabeçalho.
+
+Tarefas que continuam: 6 (visuais por etapa, agora focados nas telas reais dos projetos), 7 (foto e arquivos), 8 (SEO), 9 (revisão), 10 (publicação).
