@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getDictionary } from "@/i18n/dictionaries";
 import { hasLocale } from "@/i18n/config";
 import { Header } from "@/components/site/header";
-import { Pipeline } from "@/components/site/pipeline";
+import { SideMap } from "@/components/site/side-map";
 import { Motion } from "@/components/site/motion";
 import {
   AnalysisSection,
@@ -29,8 +29,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </a>
       <Motion />
       <Header {...props} />
-      <main className="relative mx-auto max-w-6xl px-6 md:pl-24">
-        <Pipeline />
+      <SideMap d={d} />
+      <main className="relative mx-auto max-w-6xl px-6 md:px-10">
         <SourceSection {...props} />
         <IngestionSection {...props} />
         <ProcessingSection {...props} />

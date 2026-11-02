@@ -45,6 +45,7 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
             {stageIds.map((id, i) => (
               <li key={id}>
                 <a
+                  data-stage-link
                   href={`#${id}`}
                   className="rounded-md px-3 py-2 transition-colors hover:text-ink"
                 >

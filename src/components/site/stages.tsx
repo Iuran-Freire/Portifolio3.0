@@ -5,19 +5,6 @@ export const stageIds = ["source", "ingestion", "processing", "analysis", "deplo
 
 export type StageId = (typeof stageIds)[number];
 
-// Marcador da etapa sobre o trilho do pipeline (coluna à esquerda).
-export function StageNode({ index, className = "top-24 md:top-32" }: { index: number; className?: string }) {
-  return (
-    <span
-      aria-hidden
-      data-stage-node
-      className={`absolute -left-[3.25rem] hidden ${className} size-7 place-items-center rounded-full border border-signal bg-paper font-mono text-xs text-signal md:grid`}
-    >
-      {String(index).padStart(2, "0")}
-    </span>
-  );
-}
-
 export function Stage({
   id,
   index,
@@ -35,7 +22,6 @@ export function Stage({
 }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="relative scroll-mt-24 py-24 md:py-32">
-      <StageNode index={index} />
       <p className="label-mono mb-5 flex items-center gap-3 text-ink-muted">
         <span className="text-signal">{String(index).padStart(2, "0")}</span>
         <span aria-hidden className="h-px w-10 bg-grid" />

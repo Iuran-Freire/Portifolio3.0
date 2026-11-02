@@ -26,7 +26,7 @@ const ambient: Record<string, { x: string; y: string; color: string }> = {
   - estudos de caso que se empilham (o próximo desliza por cima);
   - fluxo de cada projeto acendendo no ritmo da rolagem;
   - números que contam, brilho de fundo que muda por etapa,
-    etapa atual marcada no cabeçalho e a etiqueta final "impressa".
+    e a etiqueta final "impressa".
   Com "reduzir movimento", nada disso roda e o conteúdo fica como está.
 */
 export function Motion() {
@@ -39,17 +39,14 @@ export function Motion() {
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
-    // Brilho de fundo e etapa atual no cabeçalho.
+    // Brilho de fundo por etapa.
     const glow = document.querySelector<HTMLElement>("[data-ambient]");
     stageIds.forEach((id) => {
       const section = document.getElementById(id);
       if (!section) return;
-      const link = document.querySelector<HTMLElement>(`header a[href="#${id}"]`);
       const enter = () => {
         const a = ambient[id];
         if (glow) gsap.to(glow, { "--glow-x": a.x, "--glow-y": a.y, "--glow-color": a.color, duration: 1.4, ease: "power2.out" });
-        document.querySelectorAll("header [data-current]").forEach((el) => el.removeAttribute("data-current"));
-        link?.setAttribute("data-current", "");
       };
       ScrollTrigger.create({ trigger: section, start: "top 55%", end: "bottom 55%", onEnter: enter, onEnterBack: enter });
     });

@@ -14,7 +14,7 @@ import {
   sourceCopy,
 } from "@/content/copy";
 import { ProjectCase, ProjectCompact } from "./project-case";
-import { Stage, StageNode } from "./stages";
+import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
 
@@ -25,7 +25,6 @@ export function SourceSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
     <section id="source" aria-labelledby="source-title" className="relative scroll-mt-24 pt-16 pb-24 md:pt-28 md:pb-32">
-      <StageNode index={1} className="top-16 md:top-28" />
       <h1
         id="source-title"
         data-reveal
@@ -181,7 +180,6 @@ export function DeploySection({ locale, d }: Props) {
   const mailto = `mailto:${contacts.email}?subject=${encodeURIComponent(t(contacts.emailSubject))}`;
   return (
     <section id="deploy" aria-labelledby="deploy-title" className="relative scroll-mt-24 py-24 md:py-32">
-      <StageNode index={5} />
       <div className="rounded-3xl border border-signal/40 bg-surface/80 p-8 backdrop-blur-sm md:p-14">
         <p data-print className="label-mono inline-flex items-center gap-2 rounded-md border border-signal/60 px-3 py-1.5 text-signal">
           <span aria-hidden className="size-1.5 rounded-full bg-signal" />
@@ -237,7 +235,7 @@ export function Footer({ locale }: Props) {
   const t = tr(locale);
   return (
     <footer className="border-t border-grid">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-ink-muted md:pl-24">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-ink-muted md:px-10">
         <p>© {new Date().getFullYear()} Iuran Freire · Manaus</p>
         <a href={contacts.siteSource} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
           {t(footerCopy.source)}
