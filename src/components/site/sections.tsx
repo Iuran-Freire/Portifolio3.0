@@ -87,7 +87,7 @@ export function HomeSection({ locale, d }: Props) {
           height={1125}
           priority
           sizes="(min-width: 1024px) 30vw, 0px"
-          className="relative w-full [mask-image:radial-gradient(ellipse_60%_56%_at_50%_44%,black_48%,transparent_100%)] grayscale-[15%] contrast-[1.05]"
+          className="relative w-full [mask-image:linear-gradient(to_bottom,black_78%,transparent)] grayscale-[15%] contrast-[1.05]"
         />
       </figure>
       </div>
