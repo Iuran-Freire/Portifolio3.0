@@ -42,3 +42,4 @@ next-env.d.ts
 
 # fotos e arquivos de origem (não publicar)
 /assets-source/
+!.env.production
