@@ -5,12 +5,11 @@ import { Header } from "@/components/site/header";
 import { SideMap } from "@/components/site/side-map";
 import { Motion } from "@/components/site/motion";
 import {
-  AnalysisSection,
-  DeploySection,
+  ContactSection,
   Footer,
-  IngestionSection,
-  ProcessingSection,
-  SourceSection,
+  HomeSection,
+  JourneySection,
+  ProjectsSection,
 } from "@/components/site/sections";
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
@@ -22,7 +21,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <a
-        href="#source"
+        href="#home"
         className="sr-only z-50 rounded-md bg-signal px-4 py-2 text-signal-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
       >
         {d.skipToContent}
@@ -31,11 +30,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <Header {...props} />
       <SideMap d={d} />
       <main className="relative mx-auto max-w-6xl px-6 md:px-10">
-        <SourceSection {...props} />
-        <IngestionSection {...props} />
-        <ProcessingSection {...props} />
-        <AnalysisSection {...props} />
-        <DeploySection {...props} />
+        <HomeSection {...props} />
+        <ProjectsSection {...props} />
+        <JourneySection {...props} />
+        <ContactSection {...props} />
       </main>
       <Footer {...props} />
     </>

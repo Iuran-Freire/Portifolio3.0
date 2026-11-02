@@ -13,63 +13,52 @@ export const sourceCopy = {
     en: "to the dashboard that decides.",
   } satisfies Localized,
   lead: {
-    pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Construí um app de OCR que reduziu a validação de peças de cerca de 10 minutos para 1, APIs em Node e Cloudflare Workers e dashboards de Power BI de produção e estoque.",
-    en: "I'm Iuran, a developer in training based in Manaus. I built an OCR app that cut part validation from about 10 minutes to 1, APIs on Node and Cloudflare Workers, and Power BI dashboards for production and inventory.",
+    pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Construí um app de OCR que reduziu a validação de peças de cerca de 10 minutos para menos de 1, sistemas web com APIs em Node e Cloudflare Workers e dashboards de Power BI de produção e estoque.",
+    en: "I'm Iuran, a developer in training based in Manaus. I built an OCR app that cut part validation from about 10 minutes to under 1, web systems with APIs on Node and Cloudflare Workers, and Power BI dashboards for production and inventory.",
   } satisfies Localized,
   seeking: {
     pt: "Procuro estágio ou vaga júnior em dados (Power BI) ou desenvolvimento.",
     en: "I'm looking for an internship or junior role in data (Power BI) or development.",
   } satisfies Localized,
-  journeyTitle: {
-    pt: "Como cheguei aqui",
-    en: "How I got here",
+};
+
+export const projectsCopy = {
+  title: {
+    pt: "Oito projetos, um problema real em cada",
+    en: "Eight projects, each built for a real problem",
+  } satisfies Localized,
+  intro: {
+    pt: "Todos nasceram de necessidades da fábrica onde trabalho. Um deles está em uso na linha de produção; os outros são protótipos completos, com o código aberto para você ler.",
+    en: "All of them came from real needs at the factory where I work. One is in use on the production line; the others are complete prototypes, with open source code you can read.",
   } satisfies Localized,
 };
 
-export const ingestionCopy = {
-  title: {
-    pt: "Apps que capturam o dado onde ele nasce",
-    en: "Apps that capture data where it starts",
-  } satisfies Localized,
-  intro: {
-    pt: "Na fábrica, o dado nasce numa câmera de celular, num código de barras ou numa prancheta. Estes apps fazem a coleta funcionar até sem internet.",
-    en: "On a factory floor, data starts in a phone camera, a barcode or a clipboard. These apps keep collection working even without internet.",
-  } satisfies Localized,
+// Rótulos do cartão de projeto.
+export const cardLabels = {
+  status: {
+    "in-use": { pt: "Em uso na linha de produção", en: "In use on the production line" },
+    prototype: { pt: "Protótipo", en: "Prototype" },
+    dashboard: { pt: "Dashboard público", en: "Public dashboard" },
+    "this-site": { pt: "Este site", en: "This site" },
+  } satisfies Record<string, Localized>,
+  problem: { pt: "O problema", en: "The problem" } satisfies Localized,
+  challenges: { pt: "A maior dificuldade", en: "The hardest part" } satisfies Localized,
+  built: { pt: "O que construí", en: "What I built" } satisfies Localized,
+  results: { pt: "Resultado", en: "Outcome" } satisfies Localized,
+  learned: { pt: "O que aprendi", en: "What I learned" } satisfies Localized,
+  flow: { pt: "Como o dado passa pelo sistema", en: "How data moves through it" } satisfies Localized,
 };
 
-export const processingCopy = {
+export const journeyCopy = {
   title: {
-    pt: "Regras e APIs que garantem que o dado está certo",
-    en: "Rules and APIs that make sure the data is right",
+    pt: "De técnico em automação a desenvolvedor",
+    en: "From automation technician to developer",
   } satisfies Localized,
   intro: {
-    pt: "Antes de virar gráfico, o dado precisa ser validado, relacionado ao código certo e guardado com histórico de quem alterou o quê.",
-    en: "Before it becomes a chart, data has to be validated, matched to the right code and stored with a history of who changed what.",
+    pt: "Aprendi a programar resolvendo problemas da linha de produção, com a IA como apoio para entender cada linguagem e cada camada do sistema.",
+    en: "I learned to code by solving production line problems, using AI as a partner to understand each language and each layer of a system.",
   } satisfies Localized,
-};
-
-export const analysisCopy = {
-  title: {
-    pt: "Painéis em que alguém toma decisão",
-    en: "Dashboards where someone makes a decision",
-  } satisfies Localized,
-  intro: {
-    pt: "No estágio, construí dashboards de Power BI para acompanhar produção, defeitos, yield e estoque. Os dois abaixo estão abertos para você navegar.",
-    en: "During my internship I built Power BI dashboards to track production, defects, yield and inventory. The two below are public, so you can explore them.",
-  } satisfies Localized,
-  numbersTitle: {
-    pt: "O que mudou com os sistemas",
-    en: "What changed with these systems",
-  } satisfies Localized,
-  systemsBuilt: {
-    pt: "sistemas construídos, do app de câmera à API",
-    en: "systems built, from camera app to API",
-  } satisfies Localized,
-  publicDashboards: {
-    pt: "dashboards públicos de Power BI",
-    en: "public Power BI dashboards",
-  } satisfies Localized,
-  skillsTitle: {
+  toolsTitle: {
     pt: "Ferramentas que uso",
     en: "Tools I use",
   } satisfies Localized,

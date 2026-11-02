@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-// As cinco etapas do pipeline, na ordem em que o recrutador as percorre.
-export const stageIds = ["source", "ingestion", "processing", "analysis", "deploy"] as const;
+// As seções principais, na ordem em que o recrutador as percorre.
+export const stageIds = ["home", "projects", "journey", "contact"] as const;
 
 export type StageId = (typeof stageIds)[number];
 

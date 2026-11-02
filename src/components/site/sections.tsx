@@ -1,46 +1,53 @@
 import type React from "react";
-import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import { pick, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { contacts, timeline } from "@/content/profile";
-import { projects, projectsByStage } from "@/content/projects";
+import { projects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
-import {
-  analysisCopy,
-  deployCopy,
-  footerCopy,
-  ingestionCopy,
-  processingCopy,
-  sourceCopy,
-} from "@/content/copy";
-import { ProjectCase, ProjectCompact } from "./project-case";
+import { deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
+import { ProjectCard } from "./project-case";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
 
 const tr = (locale: Locale) => <T,>(v: { pt: T; en: T }) => pick(v, locale);
 
-// 1. Fonte: quem é o Iuran e o que ele procura.
-export function SourceSection({ locale, d }: Props) {
+// 01. Início: quem é o Iuran e o que ele procura.
+export function HomeSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
-    <section id="source" aria-labelledby="source-title" className="relative scroll-mt-24 pt-16 pb-24 md:pt-28 md:pb-32">
+    <section id="home" aria-labelledby="home-title" className="relative scroll-mt-24 pt-16 pb-24 md:pt-28 md:pb-32">
       <h1
-        id="source-title"
+        id="home-title"
         data-reveal
         className="font-display max-w-[16ch] text-[clamp(3rem,7.4vw,7rem)] leading-[0.95]"
       >
         {t(sourceCopy.title)}{" "}
         <span className="text-signal">{t(sourceCopy.titleAccent)}</span>
       </h1>
-      <p data-reveal style={{ "--reveal-order": 1 } as React.CSSProperties} className="mt-8 max-w-[62ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted">
+      <p
+        data-reveal
+        style={{ "--reveal-order": 1 } as React.CSSProperties}
+        className="mt-8 max-w-[62ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted"
+      >
         {t(sourceCopy.lead)}
       </p>
-      <p data-reveal style={{ "--reveal-order": 2 } as React.CSSProperties} className="mt-4 max-w-[62ch] text-[length:var(--step-1)] font-medium">{t(sourceCopy.seeking)}</p>
+      <p
+        data-reveal
+        style={{ "--reveal-order": 2 } as React.CSSProperties}
+        className="mt-4 max-w-[62ch] text-[length:var(--step-1)] font-medium"
+      >
+        {t(sourceCopy.seeking)}
+      </p>
 
-      <div data-reveal style={{ "--reveal-order": 3 } as React.CSSProperties} className="mt-10 flex flex-wrap items-center gap-3">
+      <div
+        data-reveal
+        style={{ "--reveal-order": 3 } as React.CSSProperties}
+        className="mt-10 flex flex-wrap items-center gap-3"
+      >
         <a
-          href="#ingestion"
+          href="#projects"
           className="rounded-full bg-signal px-6 py-3 font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
         >
           {d.actions.seeProjects}
@@ -54,117 +61,51 @@ export function SourceSection({ locale, d }: Props) {
           {d.actions.downloadResume}
         </a>
       </div>
-
-      <div className="mt-20 max-w-3xl">
-        <h2 className="label-mono mb-6 text-ink-muted">{t(sourceCopy.journeyTitle)}</h2>
-        <ol className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
-          {timeline.map((item) => (
-            <li key={item.period.pt} className="border-l border-grid pl-4">
-              <p className="label-mono text-signal">{t(item.period)}</p>
-              <p className="mt-1 text-[0.95rem]">{t(item.text)}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
     </section>
   );
 }
 
-// 2. Ingestão: apps que capturam o dado.
-export function IngestionSection({ locale, d }: Props) {
-  const t = tr(locale);
-  const items = projectsByStage("ingestion");
-  return (
-    <Stage id="ingestion" index={2} name={d.nav.ingestion} title={t(ingestionCopy.title)} intro={t(ingestionCopy.intro)}>
-      <div className="space-y-12">
-        {items.filter((p) => p.featured).map((p) => (
-          <ProjectCase key={p.id} project={p} locale={locale} d={d} />
-        ))}
-        <div className="grid gap-10 md:grid-cols-2">
-          {items.filter((p) => !p.featured).map((p) => (
-            <ProjectCompact key={p.id} project={p} locale={locale} d={d} />
-          ))}
-        </div>
-      </div>
-    </Stage>
-  );
-}
-
-// 3. Processamento: regras, APIs e banco.
-export function ProcessingSection({ locale, d }: Props) {
+// 02. Projetos: os oito, no mesmo formato, empilhando ao rolar.
+export function ProjectsSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
-    <Stage id="processing" index={3} name={d.nav.processing} title={t(processingCopy.title)} intro={t(processingCopy.intro)}>
-      <div data-stack-group className="space-y-12">
-        {projectsByStage("processing").map((p) => (
-          <ProjectCase key={p.id} project={p} locale={locale} d={d} />
+    <Stage id="projects" index={2} name={d.nav.projects} title={t(projectsCopy.title)} intro={t(projectsCopy.intro)}>
+      <div data-stack-group className="space-y-10">
+        {projects.map((project, i) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={i + 1}
+            total={projects.length}
+            locale={locale}
+            d={d}
+          />
         ))}
       </div>
     </Stage>
   );
 }
 
-// 4. Análise: dashboards, números e ferramentas.
-export function AnalysisSection({ locale, d }: Props) {
+// 03. Trajetória: de onde veio e com o que trabalha.
+export function JourneySection({ locale, d }: Props) {
   const t = tr(locale);
-  const dashboards = projectsByStage("analysis")[0];
-  const metrics = projects.flatMap((p) => (p.metric ? [{ ...p.metric, project: p.title }] : []));
-  const systemsCount = projects.filter((p) => p.stage !== "analysis").length;
-
   return (
-    <Stage id="analysis" index={4} name={d.nav.analysis} title={t(analysisCopy.title)} intro={t(analysisCopy.intro)}>
-      {dashboards?.links && (
-        <ul className="grid gap-6 md:grid-cols-2">
-          {dashboards.links.map((link) => (
-            <li key={link.href} data-fade>
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block rounded-2xl border border-grid bg-surface/80 p-6 transition-colors hover:border-signal"
-              >
-                <span className="flex items-center justify-between gap-4">
-                  <span className="font-display text-[length:var(--step-1)]">{t(link.label)}</span>
-                  <ArrowUpRight className="size-5 text-signal transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                </span>
-                <span className="mt-2 block text-sm text-ink-muted">{d.actions.openDashboard} · Power BI</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+    <Stage id="journey" index={3} name={d.nav.journey} title={t(journeyCopy.title)} intro={t(journeyCopy.intro)}>
+      <ol className="grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
+        {timeline.map((item) => (
+          <li key={item.period.pt} data-fade className="border-l border-grid pl-5">
+            <p className="label-mono text-signal">{t(item.period)}</p>
+            <p className="mt-2">{t(item.text)}</p>
+          </li>
+        ))}
+      </ol>
 
       <div data-fade className="mt-20">
-        <h3 className="label-mono mb-6 text-ink-muted">{t(analysisCopy.numbersTitle)}</h3>
-        <dl className="grid border-t border-grid sm:grid-cols-2 lg:grid-cols-4">
-          {metrics.map((m) => (
-            <div key={m.value} className="flex flex-col border-b border-grid py-6 sm:pr-6">
-              <dt className="text-sm text-ink-muted">
-                {t(m.project)}: {t(m.label)}
-                {m.estimated && ` (${d.estimated})`}
-              </dt>
-              <dd data-count className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-signal">{m.value}</dd>
-            </div>
-          ))}
-          <div className="flex flex-col border-b border-grid py-6 sm:pr-6">
-            <dt className="text-sm text-ink-muted">{t(analysisCopy.systemsBuilt)}</dt>
-            <dd data-count className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-signal">{systemsCount}</dd>
-          </div>
-          <div className="flex flex-col border-b border-grid py-6">
-            <dt className="text-sm text-ink-muted">{t(analysisCopy.publicDashboards)}</dt>
-            <dd data-count className="order-first mb-2 font-mono text-[length:var(--step-3)] leading-none text-signal">
-              {dashboards?.links?.length ?? 0}
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      <div data-fade className="mt-20">
-        <h3 className="label-mono mb-6 text-ink-muted">{t(analysisCopy.skillsTitle)}</h3>
+        <h3 className="label-mono mb-6 text-ink-muted">{t(journeyCopy.toolsTitle)}</h3>
         <div className="grid gap-8 md:grid-cols-2">
           {skillGroups.map((group) => (
             <div key={group.title.pt}>
-              <p className="font-display">{t(group.title)}</p>
+              <p className="font-display text-[length:var(--step-2)]">{t(group.title)}</p>
               <p className="mt-2 text-ink-muted">{group.items.join(", ")}</p>
             </div>
           ))}
@@ -174,25 +115,30 @@ export function AnalysisSection({ locale, d }: Props) {
   );
 }
 
-// 5. Deploy: a chamada final.
-export function DeploySection({ locale, d }: Props) {
+// 04. Contato: a chamada final.
+export function ContactSection({ locale, d }: Props) {
   const t = tr(locale);
   const mailto = `mailto:${contacts.email}?subject=${encodeURIComponent(t(contacts.emailSubject))}`;
   return (
-    <section id="deploy" aria-labelledby="deploy-title" className="relative scroll-mt-24 py-24 md:py-32">
+    <section id="contact" aria-labelledby="contact-title" className="relative scroll-mt-24 py-24 md:py-32">
       <div className="rounded-3xl border border-signal/40 bg-surface/80 p-8 backdrop-blur-sm md:p-14">
-        <p data-print className="label-mono inline-flex items-center gap-2 rounded-md border border-signal/60 px-3 py-1.5 text-signal">
+        <p
+          data-print
+          className="label-mono inline-flex items-center gap-2 rounded-md border border-signal/60 px-3 py-1.5 text-signal"
+        >
           <span aria-hidden className="size-1.5 rounded-full bg-signal" />
           {t(deployCopy.label)}
         </p>
         <h2
-          id="deploy-title"
+          id="contact-title"
           data-split
           className="font-display mt-6 max-w-[18ch] text-[length:var(--step-4)] leading-[1.02] tracking-tight"
         >
           {t(deployCopy.title)}
         </h2>
-        <p data-deploy-item className="mt-6 max-w-[56ch] text-ink-muted">{t(deployCopy.body)}</p>
+        <p data-deploy-item className="mt-6 max-w-[56ch] text-ink-muted">
+          {t(deployCopy.body)}
+        </p>
         <div data-deploy-item className="mt-10 flex flex-wrap items-center gap-3">
           <a
             href={mailto}

@@ -36,7 +36,7 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
-        <a href="#source" aria-label="Iuran Freire" className="font-display text-2xl tracking-tight">
+        <a href="#home" aria-label="Iuran Freire" className="font-display text-2xl tracking-tight">
           IF<span className="text-signal">.</span>
         </a>
 

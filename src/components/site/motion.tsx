@@ -12,11 +12,10 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 // Cor e posição do brilho de fundo em cada etapa: o recrutador sente que avançou.
 const ambient: Record<string, { x: string; y: string; color: string }> = {
-  source: { x: "80%", y: "20%", color: "rgba(239, 85, 75, 0.14)" },
-  ingestion: { x: "18%", y: "40%", color: "rgba(239, 85, 75, 0.09)" },
-  processing: { x: "85%", y: "55%", color: "rgba(240, 163, 93, 0.09)" },
-  analysis: { x: "25%", y: "70%", color: "rgba(239, 85, 75, 0.11)" },
-  deploy: { x: "55%", y: "85%", color: "rgba(239, 85, 75, 0.16)" },
+  home: { x: "80%", y: "20%", color: "rgba(239, 85, 75, 0.14)" },
+  projects: { x: "15%", y: "45%", color: "rgba(239, 85, 75, 0.08)" },
+  journey: { x: "85%", y: "60%", color: "rgba(240, 163, 93, 0.09)" },
+  contact: { x: "55%", y: "85%", color: "rgba(239, 85, 75, 0.16)" },
 };
 
 /*
@@ -87,12 +86,11 @@ export function Motion() {
       gsap.utils.toArray<HTMLElement>("[data-card]").forEach((card) => {
         gsap.fromTo(
           card,
-          { clipPath: "inset(6% 4% 6% 4% round 28px)", scale: 0.97 },
+          { clipPath: "inset(5% 3% 5% 3% round 28px)" },
           {
             clipPath: "inset(0% 0% 0% 0% round 16px)",
-            scale: 1,
             ease: "none",
-            scrollTrigger: { trigger: card, start: "top 95%", end: "top 45%", scrub: 0.6 },
+            scrollTrigger: { trigger: card, start: "top 95%", end: "top 50%", scrub: 0.6 },
           },
         );
       });
@@ -114,8 +112,8 @@ export function Motion() {
               invalidateOnRefresh: true,
             });
             gsap.to(card, {
-              scale: 0.92,
-              opacity: 0.35,
+              scale: 0.94,
+              opacity: 0,
               ease: "none",
               scrollTrigger: { trigger: next, start: "top bottom", end: "top top+=88", scrub: true },
             });
@@ -157,7 +155,7 @@ export function Motion() {
       });
 
       // Fechamento: a etiqueta sai "impressa" e os botões chegam em sequência.
-      const deploy = document.getElementById("deploy");
+      const deploy = document.getElementById("contact");
       if (deploy) {
         const tl = gsap.timeline({ scrollTrigger: { trigger: deploy, start: "top 65%", once: true } });
         tl.fromTo(
@@ -168,7 +166,14 @@ export function Motion() {
       }
     });
 
+    // Fontes e textos divididos mudam a altura dos cartões depois do carregamento:
+    // recalcula as posições quando tudo assentar, senão o empilhamento erra o ponto.
+    const refresh = () => ScrollTrigger.refresh();
+    document.fonts?.ready.then(refresh);
+    window.addEventListener("load", refresh);
+
     return () => {
+      window.removeEventListener("load", refresh);
       gsap.ticker.remove(tick);
       lenis.destroy();
       mm.revert();
