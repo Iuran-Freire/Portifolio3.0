@@ -83,15 +83,15 @@ export function Pipeline() {
       className="pointer-events-none absolute top-0 bottom-0 left-[3.625rem] hidden w-px md:block"
     >
       {/* Trilho */}
-      <div className="absolute inset-0 bg-cobalt/25" />
+      <div className="absolute inset-0 bg-signal/25" />
       {/* Preenchimento que cresce com a rolagem */}
-      <div data-rail-fill className="absolute inset-0 origin-top bg-cobalt shadow-[0_0_12px_var(--cobalt)]" />
+      <div data-rail-fill className="absolute inset-0 origin-top bg-signal shadow-[0_0_12px_var(--signal)]" />
       {/* Pacote de dados: fica na linha de leitura (sticky) e troca de forma por etapa */}
       <div className="sticky top-[45vh] h-0">
         <div
           data-packet
           data-stage="1"
-          className="packet absolute top-0 left-0 grid size-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-lg border border-cobalt bg-paper text-cobalt shadow-[0_0_24px_-4px_var(--cobalt)]"
+          className="packet absolute top-0 left-0 grid size-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-lg border border-signal bg-paper text-signal shadow-[0_0_24px_-4px_var(--signal)]"
         >
           <PacketGlyphs />
         </div>

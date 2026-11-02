@@ -12,11 +12,11 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 // Cor e posição do brilho de fundo em cada etapa: o recrutador sente que avançou.
 const ambient: Record<string, { x: string; y: string; color: string }> = {
-  source: { x: "78%", y: "18%", color: "rgba(111, 139, 255, 0.16)" },
-  ingestion: { x: "22%", y: "40%", color: "rgba(52, 199, 154, 0.11)" },
-  processing: { x: "82%", y: "55%", color: "rgba(124, 111, 255, 0.14)" },
-  analysis: { x: "30%", y: "70%", color: "rgba(111, 139, 255, 0.14)" },
-  deploy: { x: "60%", y: "85%", color: "rgba(52, 199, 154, 0.13)" },
+  source: { x: "80%", y: "20%", color: "rgba(239, 85, 75, 0.14)" },
+  ingestion: { x: "18%", y: "40%", color: "rgba(239, 85, 75, 0.09)" },
+  processing: { x: "85%", y: "55%", color: "rgba(240, 163, 93, 0.09)" },
+  analysis: { x: "25%", y: "70%", color: "rgba(239, 85, 75, 0.11)" },
+  deploy: { x: "55%", y: "85%", color: "rgba(239, 85, 75, 0.16)" },
 };
 
 /*
@@ -185,9 +185,9 @@ export function Motion() {
       className="pointer-events-none fixed inset-0 -z-10"
       style={
         {
-          "--glow-x": "78%",
-          "--glow-y": "18%",
-          "--glow-color": "rgba(111, 139, 255, 0.16)",
+          "--glow-x": "80%",
+          "--glow-y": "20%",
+          "--glow-color": "rgba(239, 85, 75, 0.14)",
           background: "radial-gradient(60rem 40rem at var(--glow-x) var(--glow-y), var(--glow-color), transparent 70%)",
         } as React.CSSProperties
       }

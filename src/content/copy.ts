@@ -5,8 +5,12 @@ import type { Localized } from "@/i18n/config";
 
 export const sourceCopy = {
   title: {
-    pt: "Do app que captura o dado ao painel em que alguém decide.",
-    en: "From the app that captures the data to the dashboard where someone decides.",
+    pt: "Do app que captura o dado",
+    en: "From the app that captures data",
+  } satisfies Localized,
+  titleAccent: {
+    pt: "ao painel que decide.",
+    en: "to the dashboard that decides.",
   } satisfies Localized,
   lead: {
     pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Construí um app de OCR que reduziu a validação de peças de cerca de 10 minutos para 1, APIs em Node e Cloudflare Workers e dashboards de Power BI de produção e estoque.",

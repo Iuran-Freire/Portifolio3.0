@@ -22,14 +22,14 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
     >
       <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="max-w-[60ch]">
-          <h3 id={`${project.id}-title`} className="font-wide text-[length:var(--step-2)] leading-tight font-bold">
+          <h3 id={`${project.id}-title`} className="font-display text-[length:var(--step-2)] leading-tight">
             {t(project.title)}
           </h3>
           <p className="mt-3 text-ink-muted">{t(project.summary)}</p>
         </div>
         {project.metric && (
           <p className="min-w-[12rem]">
-            <span data-count className="block font-mono text-[length:var(--step-4)] leading-none text-cobalt">
+            <span data-count className="block font-mono text-[length:var(--step-4)] leading-none text-signal">
               {project.metric.value}
             </span>
             <span className="mt-2 block text-sm text-ink-muted">
@@ -44,19 +44,19 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
         <div className="space-y-8">
           {project.problem && (
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-ink-muted">{t(labels.problem)}</h4>
+              <h4 className="label-mono mb-3 text-signal">{t(labels.problem)}</h4>
               <p>{t(project.problem)}</p>
             </div>
           )}
           {project.solution && (
             <div>
-              <h4 className="mb-2 text-sm font-semibold text-ink-muted">{t(labels.solution)}</h4>
+              <h4 className="label-mono mb-3 text-signal">{t(labels.solution)}</h4>
               <p>{t(project.solution)}</p>
             </div>
           )}
           {project.results && project.results.length > 0 && (
             <div>
-              <h4 className="mb-3 text-sm font-semibold text-ink-muted">{t(labels.results)}</h4>
+              <h4 className="label-mono mb-3 text-signal">{t(labels.results)}</h4>
               <ul className="space-y-2">
                 {project.results.map((result) => (
                   <li key={result.pt} className="flex gap-3">
@@ -72,14 +72,14 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
         <div className="space-y-8">
           {project.flow && project.flow.length > 0 && (
             <div className="rounded-xl border border-grid bg-paper/60 p-5">
-              <h4 className="mb-4 text-sm font-semibold text-ink-muted">{t(labels.flow)}</h4>
+              <h4 className="label-mono mb-4 text-ink-muted">{t(labels.flow)}</h4>
               <ol data-flow className="space-y-0">
                 {project.flow.map((step, i) => (
                   <li key={step.pt} className="relative flex gap-4 pb-4 last:pb-0">
                     {i < project.flow!.length - 1 && (
-                      <span aria-hidden className="absolute top-7 bottom-1 left-[0.8125rem] w-px bg-cobalt/40" />
+                      <span aria-hidden className="absolute top-7 bottom-1 left-[0.8125rem] w-px bg-signal/40" />
                     )}
-                    <span className="grid size-[1.625rem] shrink-0 place-items-center rounded-full border border-cobalt/60 font-mono text-xs text-cobalt">
+                    <span className="grid size-[1.625rem] shrink-0 place-items-center rounded-full border border-signal/60 font-mono text-xs text-signal">
                       {i + 1}
                     </span>
                     <span className="pt-0.5 text-[0.95rem]">{t(step)}</span>
@@ -100,7 +100,7 @@ export function ProjectCase({ project, locale, d }: { project: Project; locale: 
               href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium text-cobalt underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-signal underline-offset-4 hover:underline"
             >
               {d.actions.viewCode}
               <ArrowUpRight className="size-4" aria-hidden />
@@ -117,7 +117,7 @@ export function ProjectCompact({ project, locale, d }: { project: Project; local
   const t = <T,>(v: { pt: T; en: T }) => pick(v, locale);
   return (
     <article data-fade className="flex flex-col gap-3 border-t border-grid pt-6">
-      <h3 className="font-wide text-[length:var(--step-1)] font-bold">{t(project.title)}</h3>
+      <h3 className="font-display text-[length:var(--step-1)]">{t(project.title)}</h3>
       <p className="text-ink-muted">{t(project.summary)}</p>
       <p className="font-mono text-xs text-ink-muted">{project.stack.join(", ")}</p>
       {project.repo && (
@@ -125,7 +125,7 @@ export function ProjectCompact({ project, locale, d }: { project: Project; local
           href={project.repo}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-fit items-center gap-2 text-sm font-medium text-cobalt underline-offset-4 hover:underline"
+          className="inline-flex w-fit items-center gap-2 text-sm font-medium text-signal underline-offset-4 hover:underline"
         >
           {d.actions.viewCode}
           <ArrowUpRight className="size-4" aria-hidden />

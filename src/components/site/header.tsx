@@ -36,8 +36,8 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
-        <a href="#source" className="font-wide text-lg font-extrabold tracking-tight">
-          Iuran Freire
+        <a href="#source" aria-label="Iuran Freire" className="font-display text-2xl tracking-tight">
+          IF<span className="text-signal">.</span>
         </a>
 
         <nav aria-label={d.nav.label} className="hidden lg:block">
@@ -48,7 +48,7 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
                   href={`#${id}`}
                   className="rounded-md px-3 py-2 transition-colors hover:text-ink"
                 >
-                  <span className="mr-1.5 font-mono text-xs text-cobalt">{i + 1}</span>
+                  <span className="mr-1.5 font-mono text-xs text-signal">{String(i + 1).padStart(2, "0")}</span>
                   {d.nav[id]}
                 </a>
               </li>
@@ -76,7 +76,7 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
           <a
             href={d.resume.file}
             download
-            className="hidden rounded-full border border-ink/30 px-4 py-2 text-sm font-medium transition-colors hover:border-cobalt hover:text-cobalt sm:inline-block"
+            className="hidden rounded-full border border-ink/30 px-4 py-2 text-sm font-medium transition-colors hover:border-signal hover:text-signal sm:inline-block"
           >
             {d.actions.downloadResume}
           </a>

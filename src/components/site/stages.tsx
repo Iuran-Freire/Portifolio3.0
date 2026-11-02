@@ -11,9 +11,9 @@ export function StageNode({ index, className = "top-24 md:top-32" }: { index: nu
     <span
       aria-hidden
       data-stage-node
-      className={`absolute -left-[3.25rem] hidden ${className} size-7 place-items-center rounded-full border border-cobalt bg-paper font-mono text-xs text-cobalt md:grid`}
+      className={`absolute -left-[3.25rem] hidden ${className} size-7 place-items-center rounded-full border border-signal bg-paper font-mono text-xs text-signal md:grid`}
     >
-      {index}
+      {String(index).padStart(2, "0")}
     </span>
   );
 }
@@ -36,15 +36,15 @@ export function Stage({
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="relative scroll-mt-24 py-24 md:py-32">
       <StageNode index={index} />
-      <p className="mb-4 text-sm text-cobalt">
-        <span className="font-mono">{index}</span>
-        <span className="mx-2 text-ink-muted">/</span>
+      <p className="label-mono mb-5 flex items-center gap-3 text-ink-muted">
+        <span className="text-signal">{String(index).padStart(2, "0")}</span>
+        <span aria-hidden className="h-px w-10 bg-grid" />
         {name}
       </p>
       <h2
         id={`${id}-title`}
         data-split
-        className="font-wide max-w-[22ch] text-[length:var(--step-3)] leading-[1.05] font-bold tracking-tight md:text-[length:var(--step-4)]"
+        className="font-display max-w-[22ch] text-[length:var(--step-4)] leading-[0.98] md:text-[length:var(--step-5)]"
       >
         {title}
       </h2>

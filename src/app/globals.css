@@ -13,15 +13,16 @@
 
 :root {
   /* Tokens do projeto (tema escuro) */
-  --paper: #0f1522;
-  --grid: #1e2837;
-  --ink: #e6eaf0;
-  --ink-muted: #a3adbd;
-  --cobalt: #6f8bff;
-  --cobalt-ink: #0f1522;
-  --valid: #34c79a;
-  --alert: #f08a5d;
-  --surface: #151d2d;
+  --paper: #111110;
+  --grid: #1c1c1a;
+  --line: #2a2926;
+  --ink: #efeee7;
+  --ink-muted: #aaa8a2;
+  --signal: #ef554b;
+  --signal-ink: #111110;
+  --valid: #5fc29a;
+  --alert: #f0a35d;
+  --surface: #171716;
 
   /* Escala tipográfica (razão 1,333) */
   --step--1: 0.875rem;
@@ -40,8 +41,8 @@
   --card-foreground: var(--ink);
   --popover: var(--surface);
   --popover-foreground: var(--ink);
-  --primary: var(--cobalt);
-  --primary-foreground: var(--cobalt-ink);
+  --primary: var(--signal);
+  --primary-foreground: var(--signal-ink);
   --secondary: var(--grid);
   --secondary-foreground: var(--ink);
   --muted: var(--grid);
@@ -49,35 +50,37 @@
   --accent: var(--grid);
   --accent-foreground: var(--ink);
   --destructive: var(--alert);
-  --border: var(--grid);
-  --input: var(--grid);
-  --ring: var(--cobalt);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--signal);
   --radius: 0.5rem;
 
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  --paper: #e8ecf1;
-  --grid: #cbd3dd;
-  --ink: #121a2b;
-  --ink-muted: #4a5568;
-  --cobalt: #2747e8;
-  --cobalt-ink: #ffffff;
-  --valid: #0e8a6a;
-  --alert: #c2410c;
-  --surface: #f3f5f8;
+  --paper: #f1f0ec;
+  --grid: #e3e1db;
+  --line: #d2d0c8;
+  --ink: #161614;
+  --ink-muted: #5c5a55;
+  --signal: #d23b31;
+  --signal-ink: #ffffff;
+  --valid: #1f8a62;
+  --alert: #b8641c;
+  --surface: #fbfaf7;
 
   color-scheme: light;
 }
 
 @theme inline {
   --color-paper: var(--paper);
-  --color-grid: var(--grid);
+  --color-grid: var(--line);
+  --color-faint: var(--grid);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
-  --color-cobalt: var(--cobalt);
-  --color-cobalt-ink: var(--cobalt-ink);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
   --color-valid: var(--valid);
   --color-alert: var(--alert);
   --color-surface: var(--surface);
@@ -102,7 +105,7 @@
   --color-ring: var(--ring);
 
   --font-sans: var(--font-archivo);
-  --font-heading: var(--font-archivo);
+  --font-heading: var(--font-anton);
   --font-mono: var(--font-plex-mono);
 
   --radius-sm: calc(var(--radius) * 0.6);
@@ -130,25 +133,36 @@
     background-image:
       linear-gradient(var(--grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background-size: 48px 48px;
     background-attachment: fixed;
   }
 
   :focus-visible {
-    outline: 2px solid var(--cobalt);
+    outline: 2px solid var(--signal);
     outline-offset: 3px;
   }
 }
 
-/* Títulos usam a largura expandida da Archivo */
-@utility font-wide {
-  font-stretch: 125%;
+/* Títulos: Anton em maiúsculas, como na identidade atual do Iuran */
+@utility font-display {
+  font-family: var(--font-anton), "Impact", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Rótulos técnicos: mono maiúscula espaçada */
+@utility label-mono {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 /* Etapa atual no cabeçalho */
 header a[data-current] {
   color: var(--ink);
-  background-color: color-mix(in oklab, var(--cobalt) 14%, transparent);
+  background-color: color-mix(in oklab, var(--signal) 14%, transparent);
 }
 
 /* ---------- Pipeline ---------- */
@@ -168,9 +182,9 @@ header a[data-current] {
     box-shadow 0.35s ease;
 }
 [data-stage-node][data-active] {
-  background-color: var(--cobalt);
-  color: var(--cobalt-ink);
-  box-shadow: 0 0 0 5px color-mix(in oklab, var(--cobalt) 22%, transparent);
+  background-color: var(--signal);
+  color: var(--signal-ink);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--signal) 22%, transparent);
 }
 
 /* O pacote mostra só a forma da etapa atual. */

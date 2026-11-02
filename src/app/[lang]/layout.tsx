@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { Anton, Archivo, IBM_Plex_Mono } from "next/font/google";
 import { getDictionary } from "@/i18n/dictionaries";
 import { hasLocale, locales } from "@/i18n/config";
 import "lenis/dist/lenis.css";
@@ -10,6 +10,12 @@ const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin", "latin-ext"],
   axes: ["wdth"],
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -50,7 +56,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang === "pt" ? "pt-BR" : "en"}
-      className={`${archivo.variable} ${plexMono.variable} antialiased`}
+      className={`${anton.variable} ${archivo.variable} ${plexMono.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
