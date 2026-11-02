@@ -1,4 +1,5 @@
 import type React from "react";
+import Image from "next/image";
 import { Download, Mail } from "lucide-react";
 import { pick, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -11,17 +12,30 @@ import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
 
+const photoAlt = { pt: "Foto de Iuran Freire", en: "Photo of Iuran Freire" };
+
 const tr = (locale: Locale) => <T,>(v: { pt: T; en: T }) => pick(v, locale);
 
 // 01. Início: quem é o Iuran e o que ele procura.
 export function HomeSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
-    <section id="home" aria-labelledby="home-title" className="relative scroll-mt-24 pt-16 pb-24 md:pt-28 md:pb-32">
+    <section id="home" aria-labelledby="home-title" className="relative scroll-mt-24 pt-12 pb-24 md:pt-20 md:pb-32">
+      <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
+      <div>
+      {/* No celular, um retrato pequeno abre a página */}
+      <Image
+        src="/iuran-freire-sm.webp"
+        alt={t(photoAlt)}
+        width={240}
+        height={300}
+        priority
+        className="mb-8 size-20 rounded-full object-cover object-top ring-2 ring-signal/60 lg:hidden"
+      />
       <h1
         id="home-title"
         data-reveal
-        className="font-display max-w-[16ch] text-[clamp(3rem,7.4vw,7rem)] leading-[0.95]"
+        className="font-display max-w-[16ch] text-[clamp(3rem,6vw,6.25rem)] leading-[0.95]"
       >
         {t(sourceCopy.title)}{" "}
         <span className="text-signal">{t(sourceCopy.titleAccent)}</span>
@@ -60,6 +74,22 @@ export function HomeSection({ locale, d }: Props) {
           <Download className="size-4" aria-hidden />
           {d.actions.downloadResume}
         </a>
+      </div>
+      </div>
+
+      {/* No desktop, o retrato se funde ao fundo com um brilho vermelho atrás */}
+      <figure data-reveal style={{ "--reveal-order": 2 } as React.CSSProperties} className="relative hidden lg:block">
+        <div aria-hidden className="absolute inset-x-[10%] top-[18%] bottom-[8%] rounded-full bg-signal/25 blur-3xl" />
+        <Image
+          src="/iuran-freire.webp"
+          alt={t(photoAlt)}
+          width={900}
+          height={1125}
+          priority
+          sizes="(min-width: 1024px) 30vw, 0px"
+          className="relative w-full [mask-image:radial-gradient(ellipse_60%_56%_at_50%_44%,black_48%,transparent_100%)] grayscale-[15%] contrast-[1.05]"
+        />
+      </figure>
       </div>
     </section>
   );
