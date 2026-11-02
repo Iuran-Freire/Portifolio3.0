@@ -6,6 +6,7 @@ import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
 import { pick, type Locale, type Localized } from "@/i18n/config";
 import { contacts } from "@/content/profile";
 import { contactCopy } from "@/content/copy";
+import { spotlightStyle, useTilt } from "./use-tilt";
 
 // Ícones de marca desenhados à mão (a biblioteca de ícones não traz logos).
 function WhatsAppIcon() {
@@ -45,6 +46,7 @@ type Channel = {
 export function ContactChannels({ locale }: { locale: Locale }) {
   const t = <T,>(v: { pt: T; en: T }) => pick(v, locale);
   const [copied, setCopied] = useState<string | null>(null);
+  const tilt = useTilt(6);
   const mailto = `mailto:${contacts.email}?subject=${encodeURIComponent(t(contacts.emailSubject))}`;
 
   const channels: Channel[] = [
@@ -104,11 +106,17 @@ export function ContactChannels({ locale }: { locale: Locale }) {
       {channels.map((c) => (
         <li
           key={c.id}
-          data-deploy-item
-          className="group relative flex flex-col gap-4 rounded-2xl border border-grid bg-paper/60 p-5 transition-colors hover:border-signal/60 md:p-6"
+          data-contact-card
+          {...tilt}
+          className="group relative flex flex-col gap-4 rounded-2xl border border-grid bg-paper/60 p-5 transition-colors [transform-style:preserve-3d] hover:border-signal/60 md:p-6"
         >
-          <div className="flex items-center gap-3">
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-signal/12 text-signal ring-1 ring-signal/30">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style={spotlightStyle}
+          />
+          <div className="relative flex items-center gap-3">
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-signal/12 text-signal ring-1 ring-signal/30 transition-[transform,background-color,color] duration-500 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] group-hover:-rotate-12 group-hover:scale-110 group-hover:bg-signal group-hover:text-signal-ink">
               {c.icon}
             </span>
             <div className="min-w-0">
@@ -116,15 +124,18 @@ export function ContactChannels({ locale }: { locale: Locale }) {
               <p className="truncate font-medium">{c.value}</p>
             </div>
           </div>
-          <p className="text-sm text-ink-muted">{t(c.note)}</p>
-          <div className="mt-auto flex flex-wrap items-center gap-2">
+          <p className="relative text-sm text-ink-muted">{t(c.note)}</p>
+          <div className="relative mt-auto flex flex-wrap items-center gap-2">
             <a
               href={c.href}
               {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="inline-flex items-center gap-2 rounded-full border border-signal/60 px-4 py-2 text-sm font-semibold text-signal transition-colors hover:bg-signal hover:text-signal-ink"
+              className="group/link inline-flex items-center gap-2 rounded-full border border-signal/60 px-4 py-2 text-sm font-semibold text-signal transition-colors hover:bg-signal hover:text-signal-ink"
             >
               {t(c.action)}
-              <ArrowUpRight className="size-4" aria-hidden />
+              <ArrowUpRight
+                className="size-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                aria-hidden
+              />
             </a>
             {c.copy && (
               <button

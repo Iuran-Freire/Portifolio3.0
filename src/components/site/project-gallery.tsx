@@ -10,6 +10,7 @@ import type { Project } from "@/content/projects";
 import { galleryLabels } from "@/content/copy";
 import { lenisStore } from "@/lib/lenis";
 import { ProjectDetail, StatusBadge } from "./project-case";
+import { spotlightStyle, useTilt } from "./use-tilt";
 
 /*
   Vitrine dos projetos: todos visíveis de uma vez, em grade.
@@ -25,36 +26,11 @@ export function ProjectGallery({ projects, locale, d }: { projects: Project[]; l
   const tiles = useRef<(HTMLElement | null)[]>([]);
   const reduce = useRef(false);
 
-  const tilt = useRef(false);
+  const { onPointerMove: onTileMove, onPointerLeave: onTileLeave } = useTilt(7);
 
   useEffect(() => {
     reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    tilt.current = !reduce.current && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   }, []);
-
-  // Cartão inclina em 3D seguindo o mouse, e a luz interna acompanha o cursor.
-  const onTileMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (!tilt.current) return;
-    const el = e.currentTarget;
-    const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;
-    const py = (e.clientY - r.top) / r.height;
-    el.style.setProperty("--mx", `${px * 100}%`);
-    el.style.setProperty("--my", `${py * 100}%`);
-    gsap.to(el, {
-      rotateY: (px - 0.5) * 7,
-      rotateX: (0.5 - py) * 7,
-      y: -6,
-      transformPerspective: 1000,
-      duration: 0.6,
-      ease: "power3.out",
-      overwrite: "auto",
-    });
-  };
-  const onTileLeave = (e: React.PointerEvent<HTMLElement>) => {
-    if (!tilt.current) return;
-    gsap.to(e.currentTarget, { rotateX: 0, rotateY: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.6)", overwrite: "auto" });
-  };
 
   const show = useCallback((index: number, from?: DOMRect) => {
     const dialog = dialogs.current[index];
@@ -174,10 +150,7 @@ export function ProjectGallery({ projects, locale, d }: { projects: Project[]; l
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(28rem circle at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--signal) 14%, transparent), transparent 60%)",
-                }}
+                style={spotlightStyle}
               />
               <div className="relative flex flex-wrap items-center gap-3">
                 <span className="label-mono text-signal">{String(i + 1).padStart(2, "0")}</span>

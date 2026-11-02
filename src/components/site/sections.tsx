@@ -61,14 +61,16 @@ export function HomeSection({ locale, d }: Props) {
       >
         <a
           href="#projects"
-          className="rounded-full bg-signal px-6 py-3 font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
+          data-magnetic
+              className="rounded-full bg-signal px-6 py-3 font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
         >
           {d.actions.seeProjects}
         </a>
         <a
           href={d.resume.file}
           download
-          className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3 font-semibold transition-colors hover:border-signal hover:text-signal"
+          data-magnetic
+              className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3 font-semibold transition-colors hover:border-signal hover:text-signal"
         >
           <Download className="size-4" aria-hidden />
           {d.actions.downloadResume}
@@ -171,6 +173,7 @@ export function ContactSection({ locale, d }: Props) {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={mailto}
+              data-magnetic
               className="inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3.5 font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
             >
               <Mail className="size-5" aria-hidden />
@@ -180,6 +183,7 @@ export function ContactSection({ locale, d }: Props) {
               href={contacts.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              data-magnetic
               className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3.5 font-semibold transition-colors hover:border-signal hover:text-signal"
             >
               <MessageCircle className="size-5" aria-hidden />
@@ -188,6 +192,7 @@ export function ContactSection({ locale, d }: Props) {
             <a
               href={d.resume.file}
               download
+              data-magnetic
               className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3.5 font-semibold transition-colors hover:border-signal hover:text-signal"
             >
               <Download className="size-5" aria-hidden />

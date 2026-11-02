@@ -128,9 +128,47 @@ export function Motion() {
           "[data-print]",
           { clipPath: "inset(0 0 100% 0)", y: -14 },
           { clipPath: "inset(0 0 0% 0)", y: 0, duration: 0.7, ease: "steps(6)" },
-        ).from("[data-deploy-item]", { opacity: 0, y: 18, stagger: 0.12, duration: 0.6, ease: "power3.out" }, "-=0.1");
+        )
+          .from("[data-deploy-item]", { opacity: 0, y: 30, stagger: 0.12, duration: 0.8, ease: "expo.out" }, "-=0.1")
+          .from(
+            "[data-contact-card]",
+            {
+              opacity: 0,
+              y: 70,
+              rotateX: desktop ? 14 : 0,
+              transformPerspective: 1000,
+              transformOrigin: "50% 100%",
+              clipPath: "inset(35% 0% 0% 0% round 16px)",
+              duration: 1.1,
+              ease: "expo.out",
+              stagger: 0.1,
+              clearProps: "transform,clipPath",
+            },
+            "-=0.5",
+          );
       }
     });
+
+    // Botões magnéticos: são atraídos pelo cursor e voltam com um balanço elástico.
+    const magnetCleanups: (() => void)[] = [];
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      document.querySelectorAll<HTMLElement>("[data-magnetic]").forEach((el) => {
+        const xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3.out" });
+        const yTo = gsap.quickTo(el, "y", { duration: 0.5, ease: "power3.out" });
+        const move = (e: PointerEvent) => {
+          const r = el.getBoundingClientRect();
+          xTo((e.clientX - (r.left + r.width / 2)) * 0.28);
+          yTo((e.clientY - (r.top + r.height / 2)) * 0.35);
+        };
+        const leave = () => gsap.to(el, { x: 0, y: 0, duration: 0.9, ease: "elastic.out(1, 0.4)" });
+        el.addEventListener("pointermove", move);
+        el.addEventListener("pointerleave", leave);
+        magnetCleanups.push(() => {
+          el.removeEventListener("pointermove", move);
+          el.removeEventListener("pointerleave", leave);
+        });
+      });
+    }
 
     // Fontes e textos divididos mudam a altura dos cartões depois do carregamento:
     // recalcula as posições quando tudo assentar, senão o empilhamento erra o ponto.
@@ -139,6 +177,7 @@ export function Motion() {
     window.addEventListener("load", refresh);
 
     return () => {
+      magnetCleanups.forEach((fn) => fn());
       window.removeEventListener("load", refresh);
       gsap.ticker.remove(tick);
       lenis.destroy();
