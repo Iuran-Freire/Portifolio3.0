@@ -7,7 +7,7 @@ import { contacts, timeline } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
 import { deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
-import { ProjectCard } from "./project-case";
+import { ProjectGallery } from "./project-gallery";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
@@ -100,18 +100,7 @@ export function ProjectsSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
     <Stage id="projects" index={2} name={d.nav.projects} title={t(projectsCopy.title)} intro={t(projectsCopy.intro)}>
-      <div data-stack-group className="space-y-10">
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            index={i + 1}
-            total={projects.length}
-            locale={locale}
-            d={d}
-          />
-        ))}
-      </div>
+      <ProjectGallery projects={projects} locale={locale} d={d} />
     </Stage>
   );
 }

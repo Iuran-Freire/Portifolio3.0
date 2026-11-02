@@ -5,15 +5,28 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import type { Project } from "@/content/projects";
 import { cardLabels } from "@/content/copy";
 
-const statusStyle: Record<Project["status"], string> = {
+export const statusStyle: Record<Project["status"], string> = {
   "in-use": "border-valid/60 text-valid",
   prototype: "border-ink/25 text-ink-muted",
   dashboard: "border-signal/50 text-signal",
   "this-site": "border-ink/25 text-ink-muted",
 };
 
-// Um projeto contado sempre no mesmo formato. Campos ausentes não aparecem.
-export function ProjectCard({
+// Selo de situação do projeto (em uso, protótipo, dashboard, este site).
+export function StatusBadge({ project, locale }: { project: Project; locale: Locale }) {
+  return (
+    <span className={`label-mono rounded-full border px-2.5 py-1 ${statusStyle[project.status]}`}>
+      {project.status === "in-use" && (
+        <span aria-hidden className="mr-1.5 inline-block size-1.5 rounded-full bg-valid align-middle" />
+      )}
+      {pick(cardLabels.status[project.status], locale)}
+    </span>
+  );
+}
+
+// O estudo de caso completo, mostrado no painel que abre a partir da vitrine.
+// Campos ausentes não aparecem.
+export function ProjectDetail({
   project,
   index,
   total,
@@ -30,11 +43,7 @@ export function ProjectCard({
   const hasStory = Boolean(project.context || project.problem || project.challenges || project.results || project.learned);
 
   return (
-    <article
-      data-card
-      aria-labelledby={`${project.id}-title`}
-      className="origin-top rounded-2xl border border-grid bg-surface p-6 will-change-transform md:p-10"
-    >
+    <article aria-labelledby={`${project.id}-detail-title`}>
       {/* Cabeçalho: número, selo, título, resumo e o número de impacto */}
       <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="max-w-[62ch]">
@@ -42,21 +51,16 @@ export function ProjectCard({
             <span className="label-mono text-signal">
               {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
-            <span className={`label-mono rounded-full border px-2.5 py-1 ${statusStyle[project.status]}`}>
-              {project.status === "in-use" && (
-                <span aria-hidden className="mr-1.5 inline-block size-1.5 rounded-full bg-valid align-middle" />
-              )}
-              {t(cardLabels.status[project.status])}
-            </span>
+            <StatusBadge project={project} locale={locale} />
           </div>
-          <h3 id={`${project.id}-title`} className="font-display mt-4 text-[length:var(--step-3)] leading-none">
+          <h2 id={`${project.id}-detail-title`} className="font-display mt-4 text-[length:var(--step-4)] leading-none">
             {t(project.title)}
-          </h3>
+          </h2>
           <p className="mt-4 text-[length:var(--step-1)] leading-relaxed text-ink-muted">{t(project.oneLiner)}</p>
         </div>
         {project.metric && (
           <p className="min-w-[13rem]">
-            <span data-count className="block font-mono text-[length:var(--step-4)] leading-none text-signal">
+            <span className="block font-mono text-[length:var(--step-4)] leading-none text-signal">
               {project.metric.value}
             </span>
             <span className="mt-2 block max-w-[24ch] text-sm text-ink-muted">
@@ -131,8 +135,8 @@ export function ProjectCard({
         <div className="space-y-8">
           {project.flow && (
             <div className="rounded-xl border border-grid bg-paper/60 p-5">
-              <h4 className="label-mono mb-4 text-ink-muted">{t(cardLabels.flow)}</h4>
-              <ol data-flow>
+              <h3 className="label-mono mb-4 text-ink-muted">{t(cardLabels.flow)}</h3>
+              <ol>
                 {project.flow.map((step, i) => (
                   <li key={step.pt} className="relative flex gap-4 pb-4 last:pb-0">
                     {i < project.flow!.length - 1 && (
@@ -149,7 +153,7 @@ export function ProjectCard({
           )}
           {project.skills && (
             <div>
-              <h4 className="label-mono mb-3 text-ink-muted">{t(cardLabels.skills)}</h4>
+              <h3 className="label-mono mb-3 text-ink-muted">{t(cardLabels.skills)}</h3>
               <ul className="space-y-2">
                 {project.skills.map((skill) => (
                   <li key={skill.pt} className="flex gap-3 text-[0.95rem]">
@@ -182,7 +186,7 @@ export function ProjectCard({
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <h4 className="label-mono mb-3 text-signal">{label}</h4>
+      <h3 className="label-mono mb-3 text-signal">{label}</h3>
       {children}
     </div>
   );

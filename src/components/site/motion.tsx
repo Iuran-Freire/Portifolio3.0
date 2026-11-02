@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
+import { lenisStore } from "@/lib/lenis";
 import { stageIds } from "./stages";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
@@ -22,8 +23,7 @@ const ambient: Record<string, { x: string; y: string; color: string }> = {
   Coreografia da página inteira:
   - rolagem suave (Lenis) sincronizada com o GSAP;
   - títulos que sobem de dentro de uma máscara;
-  - estudos de caso que se empilham (o próximo desliza por cima);
-  - fluxo de cada projeto acendendo no ritmo da rolagem;
+  - vitrine de projetos que chega em sequência;
   - números que contam, brilho de fundo que muda por etapa,
     e a etiqueta final "impressa".
   Com "reduzir movimento", nada disso roda e o conteúdo fica como está.
@@ -33,6 +33,7 @@ export function Motion() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({ lerp: 0.09, anchors: { offset: -72 } });
+    lenisStore.current = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
@@ -82,59 +83,20 @@ export function Motion() {
         });
       });
 
-      // Estudos de caso: entram abrindo de dentro para fora.
-      gsap.utils.toArray<HTMLElement>("[data-card]").forEach((card) => {
-        gsap.fromTo(
-          card,
-          { clipPath: "inset(5% 3% 5% 3% round 28px)" },
-          {
-            clipPath: "inset(0% 0% 0% 0% round 16px)",
-            ease: "none",
-            scrollTrigger: { trigger: card, start: "top 95%", end: "top 50%", scrub: 0.6 },
-          },
-        );
-      });
-
-      // Cartões empilhados: o cartão fica preso e o próximo desliza por cima.
-      if (desktop) {
-        gsap.utils.toArray<HTMLElement>("[data-stack-group]").forEach((group) => {
-          const cards = gsap.utils.toArray<HTMLElement>("[data-card]", group);
-          cards.slice(0, -1).forEach((card, i) => {
-            const next = cards[i + 1];
-            const tall = () => card.offsetHeight > window.innerHeight - 110;
-            ScrollTrigger.create({
-              trigger: card,
-              start: () => (tall() ? "bottom bottom-=24" : "top top+=88"),
-              endTrigger: next,
-              end: "top top+=88",
-              pin: true,
-              pinSpacing: false,
-              invalidateOnRefresh: true,
-            });
-            gsap.to(card, {
-              scale: 0.94,
-              opacity: 0,
-              ease: "none",
-              scrollTrigger: { trigger: next, start: "top bottom", end: "top top+=88", scrub: true },
-            });
-          });
+      // Vitrine de projetos: os cartões chegam em sequência, de baixo e levemente inclinados.
+      gsap.utils.toArray<HTMLElement>("[data-gallery]").forEach((gallery) => {
+        gsap.from(gallery.querySelectorAll("[data-tile]"), {
+          opacity: 0,
+          y: 60,
+          rotateX: desktop ? 8 : 0,
+          transformPerspective: 900,
+          transformOrigin: "50% 100%",
+          duration: 0.9,
+          ease: "expo.out",
+          stagger: 0.08,
+          clearProps: "transform",
+          scrollTrigger: { trigger: gallery, start: "top 85%", once: true },
         });
-      }
-
-      // O caminho do dado em cada projeto acende passo a passo com a rolagem.
-      gsap.utils.toArray<HTMLElement>("[data-flow]").forEach((list) => {
-        const steps = list.querySelectorAll("li");
-        gsap.fromTo(
-          steps,
-          { opacity: 0.22, x: -10 },
-          {
-            opacity: 1,
-            x: 0,
-            stagger: 0.5,
-            ease: "none",
-            scrollTrigger: { trigger: list, start: "top 82%", end: desktop ? "bottom 50%" : "bottom 70%", scrub: 0.5 },
-          },
-        );
       });
 
       // Números contam a partir de zero.
@@ -176,6 +138,7 @@ export function Motion() {
       window.removeEventListener("load", refresh);
       gsap.ticker.remove(tick);
       lenis.destroy();
+      lenisStore.current = null;
       mm.revert();
     };
   });

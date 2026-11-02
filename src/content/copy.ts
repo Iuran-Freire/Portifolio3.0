@@ -33,6 +33,14 @@ export const projectsCopy = {
   } satisfies Localized,
 };
 
+// Rótulos da vitrine e do painel de projeto.
+export const galleryLabels = {
+  open: { pt: "Ver estudo de caso", en: "View case study" } satisfies Localized,
+  previous: { pt: "Projeto anterior", en: "Previous project" } satisfies Localized,
+  next: { pt: "Próximo projeto", en: "Next project" } satisfies Localized,
+  close: { pt: "Fechar", en: "Close" } satisfies Localized,
+};
+
 // Rótulos do cartão de projeto.
 export const cardLabels = {
   status: {
