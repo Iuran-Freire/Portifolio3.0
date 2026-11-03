@@ -16,10 +16,6 @@ export const sourceCopy = {
     pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Cresci sem computador em casa e hoje construo sistemas web e dashboards de Power BI. Um deles já valida peças na linha de produção em menos de 1 minuto.",
     en: "I'm Iuran, a developer in training based in Manaus. I grew up without a computer at home, and today I build web systems and Power BI dashboards. One of them already validates parts on the production line in under a minute.",
   } satisfies Localized,
-  available: {
-    pt: "Disponível para estágio ou vaga júnior",
-    en: "Open to internship or junior roles",
-  } satisfies Localized,
 };
 
 export const projectsCopy = {

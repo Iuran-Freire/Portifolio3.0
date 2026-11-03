@@ -42,16 +42,6 @@ export function HomeSection({ locale, d }: Props) {
             data-intro-item
             className="mb-8 size-20 rounded-full object-cover object-top ring-2 ring-signal/60 lg:hidden"
           />
-          <p
-            data-intro-item
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-grid bg-surface/70 px-3.5 py-1.5 text-sm text-ink-muted backdrop-blur"
-          >
-            <span aria-hidden className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-valid opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-valid" />
-            </span>
-            {t(sourceCopy.available)}
-          </p>
           <h1
             id="home-title"
             data-intro-title

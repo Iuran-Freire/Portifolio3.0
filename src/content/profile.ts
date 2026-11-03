@@ -63,10 +63,10 @@ export const timeline: { id: string; step: Localized; period: Localized; title: 
     id: "faculdade",
     step: { pt: "Faculdade", en: "University" },
     period: { pt: "Graduação", en: "University" },
-    title: { pt: "Engenharia da Computação", en: "Computer Engineering" },
+    title: { pt: "Da Engenharia para ADS", en: "From Engineering to Systems Development" },
     text: {
-      pt: "Cursei Engenharia da Computação na FAMETRO até o 4º período.",
-      en: "I studied Computer Engineering at FAMETRO up to the 4th semester.",
+      pt: "Comecei Engenharia da Computação na FAMETRO e cursei até o 4º período. Depois, segui para Análise e Desenvolvimento de Sistemas, mais focada no software que eu queria construir.",
+      en: "I started Computer Engineering at FAMETRO and studied up to the 4th semester. Then I moved on to Systems Analysis and Development, which is more focused on the software I wanted to build.",
     },
   },
   {
