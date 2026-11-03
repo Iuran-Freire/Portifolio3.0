@@ -30,10 +30,18 @@ Modelo recomendado: **Nano Banana 2.1** (mantém melhor a pessoa da foto). Para 
 > Um escritório de empresa visto de longe: várias mesas com computadores, colegas trabalhando, uma janela grande. Ele está numa das mesas, de frente para dois monitores, um deles com um dashboard de gráficos de barras (sem textos legíveis). A luz vermelha da tela se destaca no ambiente.
 
 **6 · `software.webp`**
-> Uma bancada de trabalho perto da linha de produção, vista de longe: peças industriais numa esteira, um notebook aberto com linhas de código (borradas, sem texto legível) e ele em pé, apontando o celular para uma das peças. A tela do celular brilha em vermelho.
+> Um pequeno espaço de trabalho à noite, visto de longe e um pouco de lado: uma mesa encostada numa janela de vidro por onde se vê, desfocada, a linha de produção iluminada de uma fábrica. Na mesa, um notebook aberto com linhas de código coloridas e abstratas (sem texto legível), um segundo monitor mostrando a tela de um aplicativo com um grande sinal de confirmação vermelho, um celular apoiado num suporte, uma caneca e algumas anotações. Ele está sentado na cadeira, de corpo inteiro, recostado e sorrindo para a tela com cara de "funcionou". A luz vermelha das telas ilumina o ambiente escuro.
+
+**Alternativa mais simples (se a de cima também sair estranha):**
+> Um quarto à noite transformado em espaço de estudo, visto de longe: uma escrivaninha com notebook aberto mostrando linhas de código coloridas e abstratas (sem texto legível), uma luminária e livros empilhados. Ele está sentado, de corpo inteiro, digitando, com a luz vermelha da tela iluminando o ambiente escuro.
 
 **7 · `hoje.webp`**
 > Um corredor longo e escuro visto de trás, com ele pequeno ao centro caminhando de mochila nas costas em direção a uma porta aberta no fim do corredor, de onde sai uma luz vermelho-coral intensa, como o começo de algo novo.
+
+## Erros comuns das IAs e como pedir correção
+
+- **Mãos ou objetos estranhos:** *"Refaça com as mãos apoiadas na mesa ou no teclado, sem segurar objetos pequenos."*
+- **Texto ou letras na tela:** *"Refaça sem nenhum texto legível; as telas mostram só formas, gráficos e linhas coloridas abstratas."*
 
 ## Se sair muito perto
 
