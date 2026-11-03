@@ -83,6 +83,13 @@ export const journeyCopy = {
   } satisfies Localized,
 };
 
+export const journeyLabels = {
+  steps: { pt: "Etapas da trajetória", en: "Journey steps" } satisfies Localized,
+  previous: { pt: "Etapa anterior", en: "Previous step" } satisfies Localized,
+  next: { pt: "Próxima etapa", en: "Next step" } satisfies Localized,
+  hint: { pt: "Arraste a imagem ou use as setas", en: "Swipe the image or use the arrows" } satisfies Localized,
+};
+
 export const deployCopy = {
   label: {
     pt: "Pronto para produção",

@@ -10,7 +10,7 @@ import { contactCopy, deployCopy, footerCopy, journeyCopy, projectsCopy, sourceC
 import { ProjectGallery } from "./project-gallery";
 import { ContactChannels } from "./contact-channels";
 import { HeroTech, TechMarquee } from "./hero-tech";
-import { JourneyWalk } from "./journey-walk";
+import { JourneyCarousel } from "./journey-carousel";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
@@ -121,7 +121,7 @@ export function JourneySection({ locale, d }: Props) {
   const t = tr(locale);
   return (
     <Stage id="journey" index={3} name={d.nav.journey} title={t(journeyCopy.title)} intro={t(journeyCopy.intro)}>
-      <JourneyWalk locale={locale} />
+      <JourneyCarousel locale={locale} />
 
       <div data-fade className="mt-20">
         <h3 className="label-mono mb-6 text-ink-muted">{t(journeyCopy.toolsTitle)}</h3>

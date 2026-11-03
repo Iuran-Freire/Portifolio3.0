@@ -204,57 +204,6 @@ header a[data-stage-link][data-current] {
   animation: intro-failsafe 0s 4s forwards;
 }
 
-/* ---------- Trajetória: a caminhada ---------- */
-.journey-walk {
-  scrollbar-width: none;
-}
-.journey-walk::-webkit-scrollbar {
-  display: none;
-}
-.journey-walk[data-pinned] {
-  overflow: hidden;
-}
-.journey-walk[data-pinned] ol {
-  scroll-snap-type: none;
-}
-.journey-walk[data-pinned] .journey-trail {
-  display: block;
-}
-.walker svg {
-  transition: transform 0.3s ease;
-}
-.walker[data-facing="left"] svg {
-  transform: scaleX(-1);
-}
-.walker path {
-  transform-box: fill-box;
-  transform-origin: 50% 0%;
-}
-@keyframes walker-swing {
-  from {
-    transform: rotate(22deg);
-  }
-  to {
-    transform: rotate(-22deg);
-  }
-}
-.walker[data-walking="true"] .walker-leg-a,
-.walker[data-walking="true"] .walker-arm-b {
-  animation: walker-swing 0.32s ease-in-out infinite alternate;
-}
-.walker[data-walking="true"] .walker-leg-b,
-.walker[data-walking="true"] .walker-arm-a {
-  animation: walker-swing 0.32s ease-in-out infinite alternate-reverse;
-}
-.walker[data-walking="true"] svg {
-  animation: walker-bob 0.32s ease-in-out infinite alternate;
-}
-@keyframes walker-bob {
-  to {
-    translate: 0 -3px;
-  }
-}
-
 /* ---------- Abertura (componente Intro) ---------- */
 .intro-curtain {
   display: none;
