@@ -11,6 +11,9 @@ import type { Localized } from "@/i18n/config";
 
 export type ProjectStatus = "in-use" | "prototype" | "dashboard" | "this-site";
 
+// Área do projeto: as duas frentes que o Iuran busca.
+export type ProjectArea = "dev" | "data";
+
 export type Metric = {
   value: string;
   label: Localized;
@@ -20,6 +23,7 @@ export type Metric = {
 
 export type Project = {
   id: string;
+  area: ProjectArea;
   status: ProjectStatus;
   title: Localized;
   oneLiner: Localized;
@@ -41,6 +45,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "sistema-qualidade",
+    area: "dev",
     status: "prototype",
     title: { pt: "Sistema de Gestão da Qualidade", en: "Quality Management System" },
     oneLiner: {
@@ -141,6 +146,7 @@ export const projects: Project[] = [
   },
   {
     id: "valida-laser",
+    area: "dev",
     status: "in-use",
     title: { pt: "Valida Laser", en: "Valida Laser" },
     oneLiner: {
@@ -245,6 +251,7 @@ export const projects: Project[] = [
   },
   {
     id: "gestao-fpy",
+    area: "dev",
     status: "prototype",
     title: { pt: "Gestão FPY", en: "FPY Management" },
     oneLiner: {
@@ -337,6 +344,7 @@ export const projects: Project[] = [
   },
   {
     id: "controle-de-solda",
+    area: "dev",
     status: "prototype",
     title: { pt: "Controle de Solda", en: "Soldering Control" },
     oneLiner: {
@@ -402,6 +410,7 @@ export const projects: Project[] = [
   },
   {
     id: "barcodecam",
+    area: "dev",
     status: "prototype",
     title: { pt: "BarcodeCam", en: "BarcodeCam" },
     oneLiner: {
@@ -458,6 +467,7 @@ export const projects: Project[] = [
   },
   {
     id: "gestao-estoque",
+    area: "data",
     status: "dashboard",
     title: { pt: "Gestão de Estoque", en: "Inventory Management" },
     oneLiner: {
@@ -500,6 +510,7 @@ export const projects: Project[] = [
   },
   {
     id: "performance-producao",
+    area: "data",
     status: "dashboard",
     title: { pt: "Performance de Produção e Qualidade", en: "Production and Quality Performance" },
     oneLiner: {
@@ -542,6 +553,7 @@ export const projects: Project[] = [
   },
   {
     id: "portfolio",
+    area: "dev",
     status: "this-site",
     title: { pt: "Este portfólio", en: "This portfolio" },
     oneLiner: {

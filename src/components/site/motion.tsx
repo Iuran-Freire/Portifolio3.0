@@ -32,7 +32,7 @@ export function Motion() {
   useGSAP(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const lenis = new Lenis({ lerp: 0.09, anchors: { offset: -72 } });
+    const lenis = new Lenis({ lerp: 0.09, anchors: { offset: -72 }, allowNestedScroll: true });
     lenisStore.current = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);

@@ -33,8 +33,17 @@ export const projectsCopy = {
   } satisfies Localized,
 };
 
+// Áreas da vitrine de projetos.
+export const areaLabels = {
+  dev: { pt: "Desenvolvimento", en: "Development" } satisfies Localized,
+  data: { pt: "Dados e Power BI", en: "Data and Power BI" } satisfies Localized,
+};
+
 // Rótulos da vitrine e do painel de projeto.
 export const galleryLabels = {
+  areas: { pt: "Áreas dos projetos", en: "Project areas" } satisfies Localized,
+  scrollPrev: { pt: "Ver projetos anteriores", en: "See previous projects" } satisfies Localized,
+  scrollNext: { pt: "Ver mais projetos", en: "See more projects" } satisfies Localized,
   open: { pt: "Ver estudo de caso", en: "View case study" } satisfies Localized,
   previous: { pt: "Projeto anterior", en: "Previous project" } satisfies Localized,
   next: { pt: "Próximo projeto", en: "Next project" } satisfies Localized,
