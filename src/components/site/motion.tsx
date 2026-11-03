@@ -101,6 +101,20 @@ export function Motion() {
         });
       });
 
+      // Ferramentas: os cartões saltam em sequência, como peças sendo encaixadas.
+      gsap.utils.toArray<HTMLElement>("[data-tools]").forEach((list) => {
+        gsap.from(list.querySelectorAll("[data-tool]"), {
+          opacity: 0,
+          y: 36,
+          scale: 0.85,
+          duration: 0.8,
+          ease: "back.out(1.6)",
+          stagger: { each: 0.06, from: "start" },
+          clearProps: "transform",
+          scrollTrigger: { trigger: list, start: "top 88%", once: true },
+        });
+      });
+
       // Números contam a partir de zero.
       gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
         // Guarda o valor original: se a animação for recriada, não parte de um texto já zerado.

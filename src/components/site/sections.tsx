@@ -5,12 +5,12 @@ import { pick, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { contacts } from "@/content/profile";
 import { projects } from "@/content/projects";
-import { skillGroups } from "@/content/skills";
 import { contactCopy, deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
 import { ProjectGallery } from "./project-gallery";
 import { ContactChannels } from "./contact-channels";
 import { HeroTech, TechMarquee } from "./hero-tech";
 import { JourneyCarousel } from "./journey-carousel";
+import { ToolGrid } from "./tool-grid";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
@@ -114,15 +114,8 @@ export function JourneySection({ locale, d }: Props) {
       <JourneyCarousel locale={locale} />
 
       <div data-fade className="mt-20">
-        <h3 className="label-mono mb-6 text-ink-muted">{t(journeyCopy.toolsTitle)}</h3>
-        <div className="grid gap-8 md:grid-cols-2">
-          {skillGroups.map((group) => (
-            <div key={group.title.pt}>
-              <p className="font-display text-[length:var(--step-2)]">{t(group.title)}</p>
-              <p className="mt-2 text-ink-muted">{group.items.join(", ")}</p>
-            </div>
-          ))}
-        </div>
+        <h3 className="label-mono mb-8 text-ink-muted">{t(journeyCopy.toolsTitle)}</h3>
+        <ToolGrid locale={locale} />
       </div>
     </Stage>
   );
