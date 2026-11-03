@@ -26,12 +26,11 @@ export const contacts = {
 
 // Trajetória: a vivência industrial aparece como experiência, não como objetivo.
 // A história do "sem computador" ao desenvolvimento foi contada pelo Iuran.
-// "id" nomeia a imagem da etapa: public/journey/<id>.webp. Enquanto a imagem
-// não existir (image: false), o carretel mostra a ilustração em SVG.
-export const timeline: { id: string; image: boolean; step: Localized; period: Localized; title: Localized; text: Localized }[] = [
+// "id" nomeia a ilustração da etapa: public/journey/<id>.webp (gerada com IA;
+// os originais ficam em assets-source/journey/).
+export const timeline: { id: string; step: Localized; period: Localized; title: Localized; text: Localized }[] = [
   {
     id: "inicio",
-    image: true,
     step: { pt: "O começo", en: "The start" },
     period: { pt: "O começo", en: "The start" },
     title: { pt: "Curiosidade pelo celular", en: "Curiosity on a phone" },
@@ -42,7 +41,6 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "tecnico",
-    image: false,
     step: { pt: "Técnico", en: "Technical" },
     period: { pt: "Formação técnica", en: "Technical degree" },
     title: { pt: "Técnico em Automação Industrial", en: "Industrial Automation technician" },
@@ -53,7 +51,6 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "instrumentacao",
-    image: true,
     step: { pt: "Instrumentação", en: "Instrumentation" },
     period: { pt: "2022–2023", en: "2022–2023" },
     title: { pt: "Assistente de instrumentação", en: "Instrumentation assistant" },
@@ -64,7 +61,6 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "faculdade",
-    image: false,
     step: { pt: "Faculdade", en: "University" },
     period: { pt: "Graduação", en: "University" },
     title: { pt: "Engenharia da Computação", en: "Computer Engineering" },
@@ -75,7 +71,6 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "estagio",
-    image: false,
     step: { pt: "Estágio", en: "Internship" },
     period: { pt: "2024", en: "2024" },
     title: { pt: "O primeiro computador, no estágio", en: "My first computer, at my internship" },
@@ -86,7 +81,6 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "software",
-    image: false,
     step: { pt: "Software", en: "Software" },
     period: { pt: "2024–2026", en: "2024–2026" },
     title: { pt: "Dos dados ao software", en: "From data to software" },
@@ -97,7 +91,6 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "hoje",
-    image: false,
     step: { pt: "Hoje", en: "Now" },
     period: { pt: "Hoje", en: "Now" },
     title: { pt: "Rumo à primeira vaga em tecnologia", en: "Heading for my first tech role" },

@@ -7,7 +7,6 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { pick, type Locale } from "@/i18n/config";
 import { timeline } from "@/content/profile";
 import { journeyLabels } from "@/content/copy";
-import { scenes } from "./journey-scenes";
 
 /*
   A trajetória como um carretel de cenas.
@@ -15,8 +14,7 @@ import { scenes } from "./journey-scenes";
   vermelho até a etapa atual; clicar numa etapa, usar as setas (botões ou
   teclado) ou arrastar para o lado troca a cena. A arte entra deslizando
   com uma "cortina" e um leve zoom, e o texto chega em seguida.
-  Cada etapa mostra a imagem em public/journey/<id>.webp quando existir
-  (image: true); senão, a ilustração em SVG.
+  Cada etapa mostra a ilustração em public/journey/<id>.webp.
 */
 export function JourneyCarousel({ locale }: { locale: Locale }) {
   const t = <T,>(v: { pt: T; en: T }) => pick(v, locale);
@@ -142,40 +140,29 @@ export function JourneyCarousel({ locale }: { locale: Locale }) {
             if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(e.clientY - start.y)) go(index + (dx < 0 ? 1 : -1));
           }}
         >
-          {timeline.map((step, i) => {
-            const Scene = scenes[i] ?? scenes[scenes.length - 1];
-            return (
-              <div
-                key={step.id}
-                data-art
-                aria-hidden={i !== index}
-                className="absolute inset-0"
-                style={{ visibility: i === 0 ? "visible" : "hidden" }}
-              >
-                <div data-art-inner className="absolute inset-0">
-                  {step.image ? (
-                    <Image
-                      src={`/journey/${step.id}.webp`}
-                      alt={t(step.title)}
-                      fill
-                      sizes="(min-width: 1024px) 60vw, 100vw"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 p-6 md:p-10">
-                      <Scene title={t(step.title)} />
-                    </div>
-                  )}
-                </div>
+          {timeline.map((step, i) => (
+            <div
+              key={step.id}
+              data-art
+              aria-hidden={i !== index}
+              className="absolute inset-0"
+              style={{ visibility: i === 0 ? "visible" : "hidden" }}
+            >
+              <div data-art-inner className="absolute inset-0">
+                <Image
+                  src={`/journey/${step.id}.webp`}
+                  alt={t(step.title)}
+                  fill
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover"
+                />
               </div>
-            );
-          })}
+            </div>
+          ))}
           {/* Crédito discreto: as ilustrações são geradas com IA */}
-          {item.image && (
-            <span className="label-mono pointer-events-none absolute right-4 bottom-3 z-10 rounded-full bg-paper/70 px-2.5 py-1 text-[0.625rem] text-ink-muted backdrop-blur">
-              {t(journeyLabels.aiCredit)}
-            </span>
-          )}
+          <span className="label-mono pointer-events-none absolute right-4 bottom-3 z-10 rounded-full bg-paper/70 px-2.5 py-1 text-[0.625rem] text-ink-muted backdrop-blur">
+            {t(journeyLabels.aiCredit)}
+          </span>
           {/* Brilho e vinheta por cima da arte */}
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,color-mix(in_oklab,var(--signal)_14%,transparent),transparent_60%)]" />
         </div>
@@ -211,16 +198,6 @@ export function JourneyCarousel({ locale }: { locale: Locale }) {
           </div>
         </div>
       </div>
-
-      {/* Gradiente de brilho usado pelas ilustrações em SVG */}
-      <svg aria-hidden width="0" height="0" className="absolute">
-        <defs>
-          <radialGradient id="journey-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="var(--signal)" stopOpacity="0.45" />
-            <stop offset="100%" stopColor="var(--signal)" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
     </div>
   );
 }
