@@ -26,8 +26,6 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
-// Aplica o tema salvo antes da primeira pintura, evitando o "piscar".
-const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -73,7 +71,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript + introScript }} />
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
       </head>
       <body className="min-h-dvh">{children}</body>
     </html>

@@ -3,13 +3,14 @@ import Image from "next/image";
 import { Download, Mail, MessageCircle } from "lucide-react";
 import { pick, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { contacts, timeline } from "@/content/profile";
+import { contacts } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
 import { contactCopy, deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
 import { ProjectGallery } from "./project-gallery";
 import { ContactChannels } from "./contact-channels";
 import { HeroTech, TechMarquee } from "./hero-tech";
+import { JourneyWalk } from "./journey-walk";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
@@ -120,22 +121,7 @@ export function JourneySection({ locale, d }: Props) {
   const t = tr(locale);
   return (
     <Stage id="journey" index={3} name={d.nav.journey} title={t(journeyCopy.title)} intro={t(journeyCopy.intro)}>
-      <ol className="relative max-w-3xl">
-        <span aria-hidden className="absolute top-2 bottom-2 left-[0.3125rem] w-px bg-grid" />
-        {timeline.map((item, i) => (
-          <li key={item.period.pt} data-fade className="relative pb-10 pl-10 last:pb-0">
-            <span
-              aria-hidden
-              className={`absolute top-1.5 left-0 size-[0.6875rem] rounded-full border-2 ${
-                i === timeline.length - 1 ? "border-signal bg-signal" : "border-signal bg-paper"
-              }`}
-            />
-            <p className="label-mono text-signal">{t(item.period)}</p>
-            <h3 className="font-display mt-2 text-[length:var(--step-2)] leading-tight">{t(item.title)}</h3>
-            <p className="mt-2 max-w-[60ch] text-ink-muted">{t(item.text)}</p>
-          </li>
-        ))}
-      </ol>
+      <JourneyWalk locale={locale} />
 
       <div data-fade className="mt-20">
         <h3 className="label-mono mb-6 text-ink-muted">{t(journeyCopy.toolsTitle)}</h3>

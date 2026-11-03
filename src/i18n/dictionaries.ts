@@ -17,7 +17,6 @@ const pt = {
     contact: "Contato",
   },
   language: { label: "Idioma", switchTo: "English" },
-  theme: { toggle: "Alternar entre tema claro e escuro" },
   actions: {
     seeProjects: "Ver projetos",
     downloadResume: "Baixar currículo",
@@ -48,7 +47,6 @@ const en: Dictionary = {
     contact: "Contact",
   },
   language: { label: "Language", switchTo: "Português" },
-  theme: { toggle: "Switch between light and dark theme" },
   actions: {
     seeProjects: "See projects",
     downloadResume: "Download résumé",

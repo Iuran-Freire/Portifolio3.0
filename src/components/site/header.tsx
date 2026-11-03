@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { stageIds } from "./stages";
@@ -16,16 +15,6 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // O ícone segue o tema pelo CSS; assim não há estado para sincronizar.
-  function toggleTheme() {
-    const next = document.documentElement.dataset.theme !== "light";
-    if (next) document.documentElement.dataset.theme = "light";
-    else delete document.documentElement.dataset.theme;
-    try {
-      localStorage.setItem("theme", next ? "light" : "dark");
-    } catch {}
-  }
 
   const other: Locale = locale === "pt" ? "en" : "pt";
 
@@ -65,15 +54,6 @@ export function Header({ locale, d }: { locale: Locale; d: Dictionary }) {
           >
             {d.language.switchTo}
           </Link>
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={d.theme.toggle}
-            className="grid size-10 place-items-center rounded-md text-ink-muted transition-colors hover:text-ink"
-          >
-            <Sun className="size-4 light:hidden" aria-hidden />
-            <Moon className="hidden size-4 light:block" aria-hidden />
-          </button>
           <a
             href={d.resume.file}
             download

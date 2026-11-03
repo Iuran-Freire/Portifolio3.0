@@ -574,8 +574,8 @@ export const projects: Project[] = [
         en: "Smooth scrolling with Lenis and GSAP animations: masked title reveals, stacking cards and counting numbers.",
       },
       {
-        pt: "Tema escuro e claro, mapa lateral de navegação e acessibilidade com teclado.",
-        en: "Dark and light themes, a side navigation map and keyboard accessibility.",
+        pt: "Abertura animada, mapa lateral de navegação e acessibilidade com teclado.",
+        en: "An animated intro, a side navigation map and keyboard accessibility.",
       },
     ],
     skills: [
