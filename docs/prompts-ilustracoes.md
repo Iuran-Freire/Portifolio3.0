@@ -36,11 +36,15 @@ Modelo recomendado: **Nano Banana 2.1** (mantém melhor a pessoa da foto). Para 
 > Um quarto à noite transformado em espaço de estudo, visto de longe: uma escrivaninha com notebook aberto mostrando linhas de código coloridas e abstratas (sem texto legível), uma luminária e livros empilhados. Ele está sentado, de corpo inteiro, digitando, com a luz vermelha da tela iluminando o ambiente escuro.
 
 **7 · `hoje.webp`**
-> Um corredor longo e escuro visto de trás, com ele pequeno ao centro caminhando de mochila nas costas em direção a uma porta aberta no fim do corredor, de onde sai uma luz vermelho-coral intensa, como o começo de algo novo.
+> Um quarto aconchegante à noite, visto de longe, com clima otimista e acolhedor: uma escrivaninha junto a uma janela grande por onde se veem as luzes da cidade. Na mesa, um notebook aberto mostrando um site de portfólio com blocos e imagens abstratas (sem texto legível), um caderno da faculdade e uma luminária de luz quente. No encosto da cadeira, um crachá de trabalho e uma mochila. Ele está sentado, de corpo inteiro, virado de lado para a tela, sorrindo e confiante, como quem está pronto para o próximo passo. A luz vermelha da tela se mistura à luz quente da luminária. Nada sombrio ou assustador.
+
+**Alternativa (ao ar livre):**
+> Fim de tarde numa calçada da cidade, visto de longe, com céu alaranjado e as luzes começando a acender. Ele caminha tranquilo, de mochila nas costas, olhando o celular com um sorriso, a caminho da faculdade depois do trabalho. Pessoas e carros ao redor, clima leve e otimista. A tela do celular e alguns letreiros têm um brilho vermelho-coral. Nada sombrio ou assustador.
 
 ## Erros comuns das IAs e como pedir correção
 
 - **Mãos ou objetos estranhos:** *"Refaça com as mãos apoiadas na mesa ou no teclado, sem segurar objetos pequenos."*
+- **Clima sombrio ou de suspense:** *"Deixe o clima mais acolhedor e otimista, com luz quente; nada sombrio ou assustador."*
 - **Texto ou letras na tela:** *"Refaça sem nenhum texto legível; as telas mostram só formas, gráficos e linhas coloridas abstratas."*
 
 ## Se sair muito perto
