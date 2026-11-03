@@ -27,7 +27,9 @@ export function HomeSection({ locale, d }: Props) {
       aria-labelledby="home-title"
       className="relative flex min-h-[calc(100dvh-4rem)] scroll-mt-24 items-center pt-10 pb-20 md:pt-12"
     >
-      <div className="grid w-full grid-cols-[minmax(0,1fr)] items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+      {/* Logos das tecnologias flutuando pela seção (só no desktop) */}
+      <HeroTech />
+      <div className="relative z-10 grid w-full grid-cols-[minmax(0,1fr)] items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
         <div className="min-w-0">
           {/* No celular, um retrato pequeno abre a página */}
           <Image
@@ -85,7 +87,7 @@ export function HomeSection({ locale, d }: Props) {
           </div>
         </div>
 
-        {/* No desktop, o retrato com os logos das tecnologias flutuando ao redor */}
+        {/* No desktop, o retrato se funde ao fundo com um brilho vermelho atrás */}
         <figure data-intro-photo className="relative mx-auto hidden w-full max-w-[26rem] lg:block">
           <div aria-hidden className="absolute inset-x-[12%] top-[20%] bottom-[10%] rounded-full bg-signal/25 blur-3xl" />
           <Image
@@ -97,7 +99,6 @@ export function HomeSection({ locale, d }: Props) {
             sizes="(min-width: 1024px) 26rem, 0px"
             className="relative w-full [mask-image:linear-gradient(to_bottom,black_78%,transparent)] grayscale-[15%] contrast-[1.05]"
           />
-          <HeroTech />
         </figure>
       </div>
     </section>

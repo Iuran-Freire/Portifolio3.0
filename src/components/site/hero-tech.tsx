@@ -20,7 +20,7 @@ import {
 gsap.registerPlugin(useGSAP);
 
 /*
-  Logos das tecnologias flutuando ao redor do retrato.
+  Logos das tecnologias flutuando pela seção de início.
   Cada logo tem duas camadas: a de fora reage ao mouse (profundidade) e a de
   dentro flutua sozinha, devagar. A cor da marca aparece ao passar o mouse.
   Power BI não tem logo livre de uso (marca da Microsoft): vira um ícone
@@ -30,16 +30,18 @@ gsap.registerPlugin(useGSAP);
 
 type Chip = { icon?: SimpleIcon; label: string; x: string; y: string; size: number; depth: number };
 
+// Posições em % da seção de início, escolhidas nos espaços vazios
+// (entre o texto e a foto, nas bordas e abaixo dos botões).
 const chips: Chip[] = [
-  { icon: siPython, label: "Python", x: "4%", y: "12%", size: 58, depth: 1.2 },
-  { icon: siTypescript, label: "TypeScript", x: "80%", y: "6%", size: 50, depth: 0.8 },
-  { icon: siReact, label: "React", x: "90%", y: "40%", size: 56, depth: 1.4 },
-  { icon: siVuedotjs, label: "Vue", x: "-4%", y: "46%", size: 48, depth: 0.7 },
-  { icon: siNodedotjs, label: "Node.js", x: "84%", y: "74%", size: 52, depth: 1 },
-  { icon: siPostgresql, label: "PostgreSQL", x: "2%", y: "78%", size: 54, depth: 1.3 },
-  { icon: siCloudflare, label: "Cloudflare", x: "44%", y: "-4%", size: 46, depth: 0.6 },
-  { icon: siNextdotjs, label: "Next.js", x: "62%", y: "88%", size: 44, depth: 0.9 },
-  { label: "Power BI", x: "18%", y: "-2%", size: 0, depth: 1.1 },
+  { icon: siPython, label: "Python", x: "50%", y: "5%", size: 56, depth: 1.2 },
+  { icon: siTypescript, label: "TypeScript", x: "93%", y: "8%", size: 50, depth: 0.8 },
+  { icon: siReact, label: "React", x: "57%", y: "50%", size: 58, depth: 1.4 },
+  { icon: siVuedotjs, label: "Vue", x: "96%", y: "52%", size: 46, depth: 0.7 },
+  { icon: siNodedotjs, label: "Node.js", x: "46%", y: "78%", size: 52, depth: 1 },
+  { icon: siPostgresql, label: "PostgreSQL", x: "36%", y: "90%", size: 50, depth: 1.3 },
+  { icon: siCloudflare, label: "Cloudflare", x: "70%", y: "2%", size: 44, depth: 0.6 },
+  { icon: siNextdotjs, label: "Next.js", x: "92%", y: "86%", size: 44, depth: 0.9 },
+  { label: "Power BI", x: "6%", y: "93%", size: 0, depth: 1.1 },
 ];
 
 export function HeroTech() {
@@ -84,7 +86,7 @@ export function HeroTech() {
   );
 
   return (
-    <div ref={root} aria-hidden className="pointer-events-none absolute inset-0">
+    <div ref={root} aria-hidden className="pointer-events-none absolute inset-0 z-20 hidden lg:block">
       {chips.map((chip) => (
         <span
           key={chip.label}

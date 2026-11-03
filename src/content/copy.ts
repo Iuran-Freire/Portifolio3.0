@@ -5,12 +5,12 @@ import type { Localized } from "@/i18n/config";
 
 export const sourceCopy = {
   title: {
-    pt: "Do app que captura o dado",
-    en: "From the app that captures data",
+    pt: "Sistemas e dashboards",
+    en: "Systems and dashboards",
   } satisfies Localized,
   titleAccent: {
-    pt: "ao painel que decide.",
-    en: "to the dashboard that decides.",
+    pt: "para problemas reais.",
+    en: "for real problems.",
   } satisfies Localized,
   lead: {
     pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Cresci sem computador em casa e hoje construo sistemas web e dashboards de Power BI. Um deles já valida peças na linha de produção em menos de 1 minuto.",
