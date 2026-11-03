@@ -31,7 +31,7 @@ export const contacts = {
 export const timeline: { id: string; image: boolean; step: Localized; period: Localized; title: Localized; text: Localized }[] = [
   {
     id: "inicio",
-    image: false,
+    image: true,
     step: { pt: "O começo", en: "The start" },
     period: { pt: "O começo", en: "The start" },
     title: { pt: "Curiosidade pelo celular", en: "Curiosity on a phone" },
@@ -53,7 +53,7 @@ export const timeline: { id: string; image: boolean; step: Localized; period: Lo
   },
   {
     id: "instrumentacao",
-    image: false,
+    image: true,
     step: { pt: "Instrumentação", en: "Instrumentation" },
     period: { pt: "2022–2023", en: "2022–2023" },
     title: { pt: "Assistente de instrumentação", en: "Instrumentation assistant" },

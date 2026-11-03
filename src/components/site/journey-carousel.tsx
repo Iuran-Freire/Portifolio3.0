@@ -170,6 +170,12 @@ export function JourneyCarousel({ locale }: { locale: Locale }) {
               </div>
             );
           })}
+          {/* Crédito discreto: as ilustrações são geradas com IA */}
+          {item.image && (
+            <span className="label-mono pointer-events-none absolute right-4 bottom-3 z-10 rounded-full bg-paper/70 px-2.5 py-1 text-[0.625rem] text-ink-muted backdrop-blur">
+              {t(journeyLabels.aiCredit)}
+            </span>
+          )}
           {/* Brilho e vinheta por cima da arte */}
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,color-mix(in_oklab,var(--signal)_14%,transparent),transparent_60%)]" />
         </div>

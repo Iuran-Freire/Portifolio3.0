@@ -88,6 +88,7 @@ export const journeyLabels = {
   previous: { pt: "Etapa anterior", en: "Previous step" } satisfies Localized,
   next: { pt: "Próxima etapa", en: "Next step" } satisfies Localized,
   hint: { pt: "Arraste a imagem ou use as setas", en: "Swipe the image or use the arrows" } satisfies Localized,
+  aiCredit: { pt: "Ilustrações geradas com IA", en: "Illustrations generated with AI" } satisfies Localized,
 };
 
 export const deployCopy = {
