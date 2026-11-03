@@ -86,7 +86,12 @@ export function Intro() {
         { clipPath: "inset(100% 0% 0% 0%)", y: 40, duration: 1.2, ease: "expo.inOut" },
         withCurtain ? "-=1.3" : "-=1.1",
       )
-      .from("header", { yPercent: -100, opacity: 0, duration: 0.8 }, "<0.2");
+      .from("header", { yPercent: -100, opacity: 0, duration: 0.8 }, "<0.2")
+      .from(
+        "[data-tech-chip]",
+        { scale: 0, opacity: 0, duration: 0.7, stagger: 0.07, ease: "back.out(2.2)" },
+        "-=0.7",
+      );
 
     return () => {
       titleSplit.revert();

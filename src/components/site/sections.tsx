@@ -9,6 +9,7 @@ import { skillGroups } from "@/content/skills";
 import { contactCopy, deployCopy, footerCopy, journeyCopy, projectsCopy, sourceCopy } from "@/content/copy";
 import { ProjectGallery } from "./project-gallery";
 import { ContactChannels } from "./contact-channels";
+import { HeroTech, TechMarquee } from "./hero-tech";
 import { Stage } from "./stages";
 
 type Props = { locale: Locale; d: Dictionary };
@@ -17,80 +18,87 @@ const photoAlt = { pt: "Foto de Iuran Freire", en: "Photo of Iuran Freire" };
 
 const tr = (locale: Locale) => <T,>(v: { pt: T; en: T }) => pick(v, locale);
 
-// 01. Início: quem é o Iuran e o que ele procura.
+// 01. Início: quem é o Iuran, o que faz e o que procura, em poucas linhas.
 export function HomeSection({ locale, d }: Props) {
   const t = tr(locale);
   return (
-    <section id="home" aria-labelledby="home-title" className="relative scroll-mt-24 pt-12 pb-24 md:pt-20 md:pb-32">
-      <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
-      <div>
-      {/* No celular, um retrato pequeno abre a página */}
-      <Image
-        src="/iuran-freire-sm.webp"
-        alt={t(photoAlt)}
-        width={240}
-        height={300}
-        priority
-        data-intro-item
-        className="mb-8 size-20 rounded-full object-cover object-top ring-2 ring-signal/60 lg:hidden"
-      />
-      <h1
-        id="home-title"
-        data-intro-title
-        className="font-display max-w-[16ch] text-[clamp(3rem,6vw,6.25rem)] leading-[0.95]"
-      >
-        {t(sourceCopy.title)}{" "}
-        <span className="text-signal">{t(sourceCopy.titleAccent)}</span>
-      </h1>
-      <p
-        data-intro-lead
-        className="mt-8 max-w-[62ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted"
-      >
-        {t(sourceCopy.lead)}
-      </p>
-      <p
-        data-intro-item
-        className="mt-4 max-w-[62ch] text-[length:var(--step-1)] font-medium"
-      >
-        {t(sourceCopy.seeking)}
-      </p>
+    <section
+      id="home"
+      aria-labelledby="home-title"
+      className="relative flex min-h-[calc(100dvh-4rem)] scroll-mt-24 items-center pt-10 pb-20 md:pt-12"
+    >
+      <div className="grid w-full grid-cols-[minmax(0,1fr)] items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+        <div className="min-w-0">
+          {/* No celular, um retrato pequeno abre a página */}
+          <Image
+            src="/iuran-freire-sm.webp"
+            alt={t(photoAlt)}
+            width={240}
+            height={300}
+            priority
+            data-intro-item
+            className="mb-8 size-20 rounded-full object-cover object-top ring-2 ring-signal/60 lg:hidden"
+          />
+          <p
+            data-intro-item
+            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-grid bg-surface/70 px-3.5 py-1.5 text-sm text-ink-muted backdrop-blur"
+          >
+            <span aria-hidden className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-valid opacity-60" />
+              <span className="relative inline-flex size-2 rounded-full bg-valid" />
+            </span>
+            {t(sourceCopy.available)}
+          </p>
+          <h1
+            id="home-title"
+            data-intro-title
+            className="font-display max-w-[15ch] text-[clamp(3rem,6vw,6.25rem)] leading-[0.95]"
+          >
+            {t(sourceCopy.title)}{" "}
+            <span className="text-signal">{t(sourceCopy.titleAccent)}</span>
+          </h1>
+          <p data-intro-lead className="mt-7 max-w-[48ch] text-[length:var(--step-1)] leading-relaxed text-ink-muted">
+            {t(sourceCopy.lead)}
+          </p>
 
-      <div
-        data-intro-item
-        className="mt-10 flex flex-wrap items-center gap-3"
-      >
-        <a
-          href="#projects"
-          data-magnetic
+          <div data-intro-item className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href="#projects"
+              data-magnetic
               className="rounded-full bg-signal px-6 py-3 font-semibold text-signal-ink transition-transform hover:-translate-y-0.5"
-        >
-          {d.actions.seeProjects}
-        </a>
-        <a
-          href={d.resume.file}
-          download
-          data-magnetic
+            >
+              {d.actions.seeProjects}
+            </a>
+            <a
+              href={d.resume.file}
+              download
+              data-magnetic
               className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-6 py-3 font-semibold transition-colors hover:border-signal hover:text-signal"
-        >
-          <Download className="size-4" aria-hidden />
-          {d.actions.downloadResume}
-        </a>
-      </div>
-      </div>
+            >
+              <Download className="size-4" aria-hidden />
+              {d.actions.downloadResume}
+            </a>
+          </div>
 
-      {/* No desktop, o retrato se funde ao fundo com um brilho vermelho atrás */}
-      <figure data-intro-photo className="relative hidden lg:block">
-        <div aria-hidden className="absolute inset-x-[10%] top-[18%] bottom-[8%] rounded-full bg-signal/25 blur-3xl" />
-        <Image
-          src="/iuran-freire.webp"
-          alt={t(photoAlt)}
-          width={900}
-          height={1125}
-          priority
-          sizes="(min-width: 1024px) 30vw, 0px"
-          className="relative w-full [mask-image:linear-gradient(to_bottom,black_78%,transparent)] grayscale-[15%] contrast-[1.05]"
-        />
-      </figure>
+          <div data-intro-item className="mt-10">
+            <TechMarquee />
+          </div>
+        </div>
+
+        {/* No desktop, o retrato com os logos das tecnologias flutuando ao redor */}
+        <figure data-intro-photo className="relative mx-auto hidden w-full max-w-[26rem] lg:block">
+          <div aria-hidden className="absolute inset-x-[12%] top-[20%] bottom-[10%] rounded-full bg-signal/25 blur-3xl" />
+          <Image
+            src="/iuran-freire.webp"
+            alt={t(photoAlt)}
+            width={900}
+            height={1125}
+            priority
+            sizes="(min-width: 1024px) 26rem, 0px"
+            className="relative w-full [mask-image:linear-gradient(to_bottom,black_78%,transparent)] grayscale-[15%] contrast-[1.05]"
+          />
+          <HeroTech />
+        </figure>
       </div>
     </section>
   );

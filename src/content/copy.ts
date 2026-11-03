@@ -13,12 +13,12 @@ export const sourceCopy = {
     en: "to the dashboard that decides.",
   } satisfies Localized,
   lead: {
-    pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Construí um app de OCR que reduziu a validação de peças de cerca de 10 minutos para menos de 1, sistemas web com APIs em Node e Cloudflare Workers e dashboards de Power BI de produção e estoque.",
-    en: "I'm Iuran, a developer in training based in Manaus. I built an OCR app that cut part validation from about 10 minutes to under 1, web systems with APIs on Node and Cloudflare Workers, and Power BI dashboards for production and inventory.",
+    pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Cresci sem computador em casa e hoje construo sistemas web e dashboards de Power BI. Um deles já valida peças na linha de produção em menos de 1 minuto.",
+    en: "I'm Iuran, a developer in training based in Manaus. I grew up without a computer at home, and today I build web systems and Power BI dashboards. One of them already validates parts on the production line in under a minute.",
   } satisfies Localized,
-  seeking: {
-    pt: "Procuro estágio ou vaga júnior em dados (Power BI) ou desenvolvimento.",
-    en: "I'm looking for an internship or junior role in data (Power BI) or development.",
+  available: {
+    pt: "Disponível para estágio ou vaga júnior",
+    en: "Open to internship or junior roles",
   } satisfies Localized,
 };
 

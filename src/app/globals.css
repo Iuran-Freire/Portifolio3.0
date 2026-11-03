@@ -202,6 +202,24 @@ header a[data-stage-link][data-current] {
   color: var(--signal);
 }
 
+/* ---------- Logos das tecnologias no topo ---------- */
+.tech-chip:hover {
+  color: var(--brand);
+  border-color: color-mix(in oklab, var(--brand) 55%, transparent);
+}
+@keyframes tech-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.tech-marquee-track {
+  animation: tech-marquee 32s linear infinite;
+}
+.intro-pending [data-tech-chip] {
+  opacity: 0;
+  animation: intro-failsafe 0s 4s forwards;
+}
+
 /* ---------- Abertura (componente Intro) ---------- */
 .intro-curtain {
   display: none;
@@ -243,5 +261,8 @@ header a[data-stage-link][data-current] {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .tech-marquee-track {
+    animation: none;
   }
 }
