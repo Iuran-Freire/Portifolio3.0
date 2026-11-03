@@ -54,7 +54,7 @@ export function HomeSection({ locale, d }: Props) {
           <h1
             id="home-title"
             data-intro-title
-            className="font-display max-w-[15ch] text-[clamp(3rem,6vw,6.25rem)] leading-[0.95]"
+            className="font-display max-w-[15ch] text-[clamp(2.75rem,5.2vw,5.5rem)] leading-[0.95] text-balance"
           >
             {t(sourceCopy.title)}{" "}
             <span className="text-signal">{t(sourceCopy.titleAccent)}</span>

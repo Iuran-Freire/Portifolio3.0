@@ -27,7 +27,8 @@ export function Intro() {
       return;
     }
 
-    const titleSplit = SplitText.create(title, { type: "lines,chars", mask: "lines" });
+    // "words" mantém cada palavra inteira: sem ele, a linha pode quebrar no meio de uma palavra.
+    const titleSplit = SplitText.create(title, { type: "lines,words,chars", mask: "lines" });
     const leadSplit = SplitText.create(lead, { type: "words" });
 
     // A partir daqui o GSAP controla a visibilidade.
