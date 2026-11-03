@@ -74,8 +74,8 @@ export const journeyCopy = {
     en: "From a phone screen to my first system in production",
   } satisfies Localized,
   intro: {
-    pt: "Cresci sem computador em casa. Minha curiosidade por tecnologia vinha de vídeos e do que dava para fazer pelo celular. O primeiro contato de verdade com um computador veio há cerca de dois anos, no estágio. A partir dali, cada demanda do trabalho virou motivo para aprender: primeiro planilhas e dashboards, depois análise de dados e, por fim, desenvolvimento de software. Ao longo do caminho, usei a IA como apoio para entender cada linguagem e cada camada de um sistema.",
-    en: "I grew up without a computer at home. My curiosity about technology came from videos and whatever I could do on a phone. My first real contact with a computer came about two years ago, during my internship. From then on, every work demand became a reason to learn: first spreadsheets and dashboards, then data analysis and, finally, software development. Along the way, I used AI as a learning partner to understand each language and each layer of a system.",
+    pt: "Cresci sem computador em casa. Minha curiosidade por tecnologia vinha de vídeos e do que dava para fazer pelo celular. Há cerca de dois anos, no estágio, o computador virou minha ferramenta de trabalho, e foi onde mais aprendi. Cada demanda virou motivo para estudar: primeiro planilhas e dashboards, depois análise de dados e, por fim, desenvolvimento de software. Ao longo do caminho, usei a IA como apoio para entender cada linguagem e cada camada de um sistema.",
+    en: "I grew up without a computer at home. My curiosity about technology came from videos and whatever I could do on a phone. About two years ago, at my internship, the computer became my everyday work tool, and that is where I learned the most. Every demand became a reason to study: first spreadsheets and dashboards, then data analysis and, finally, software development. Along the way, I used AI as a learning partner to understand each language and each layer of a system.",
   } satisfies Localized,
   toolsTitle: {
     pt: "Ferramentas que uso",

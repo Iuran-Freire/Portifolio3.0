@@ -73,10 +73,10 @@ export const timeline: { id: string; step: Localized; period: Localized; title: 
     id: "estagio",
     step: { pt: "Estágio", en: "Internship" },
     period: { pt: "2024", en: "2024" },
-    title: { pt: "O primeiro computador, no estágio", en: "My first computer, at my internship" },
+    title: { pt: "O computador como ferramenta de trabalho", en: "The computer as a work tool" },
     text: {
-      pt: "No estágio na Inventus Power, tive contato de verdade com um computador pela primeira vez. Direcionei o estágio para planilhas, dashboards de Power BI e o fluxo de dados da qualidade.",
-      en: "At my Inventus Power internship, I worked with a computer for real for the first time. I steered the internship toward spreadsheets, Power BI dashboards and the quality team's data flow.",
+      pt: "O estágio na Inventus Power foi meu primeiro trabalho com computador e meu maior aprendizado na área. Direcionei o estágio para planilhas, dashboards de Power BI e o fluxo de dados da qualidade.",
+      en: "My Inventus Power internship was my first job working on a computer and where I learned the most. I steered the internship toward spreadsheets, Power BI dashboards and the quality team's data flow.",
     },
   },
   {
