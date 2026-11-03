@@ -93,10 +93,10 @@ export const timeline: { id: string; step: Localized; period: Localized; title: 
     id: "hoje",
     step: { pt: "Hoje", en: "Now" },
     period: { pt: "Hoje", en: "Now" },
-    title: { pt: "Rumo à primeira vaga em tecnologia", en: "Heading for my first tech role" },
+    title: { pt: "Em busca de novos desafios", en: "Looking for new challenges" },
     text: {
-      pt: "Sou inspetor de qualidade na Inventus Power e estudo Análise e Desenvolvimento de Sistemas na FAMETRO, à noite. Procuro estágio ou vaga júnior em dados ou desenvolvimento.",
-      en: "I'm a quality inspector at Inventus Power and study Systems Analysis and Development at FAMETRO in the evenings. I'm looking for an internship or junior role in data or development.",
+      pt: "Sou inspetor de qualidade na Inventus Power e estudo Análise e Desenvolvimento de Sistemas na FAMETRO, à noite. Quero continuar evoluindo em tecnologia, aprofundar o que sei de dados e desenvolvimento e encarar problemas que me façam crescer.",
+      en: "I'm a quality inspector at Inventus Power and study Systems Analysis and Development at FAMETRO in the evenings. I want to keep growing in technology, deepen what I know about data and development, and take on problems that push me further.",
     },
   },
 ];
