@@ -13,8 +13,8 @@ export const sourceCopy = {
     en: "for real problems.",
   } satisfies Localized,
   lead: {
-    pt: "Sou o Iuran, desenvolvedor em formação em Manaus. Cresci sem computador em casa e hoje construo sistemas web e dashboards de Power BI. Um deles já valida peças na linha de produção em menos de 1 minuto.",
-    en: "I'm Iuran, a developer in training based in Manaus. I grew up without a computer at home, and today I build web systems and Power BI dashboards. One of them already validates parts on the production line in under a minute.",
+    pt: "Sou o Iuran, desenvolvedor em Manaus. Construo aplicações web com React, TypeScript e Node.js e dashboards de Power BI para a operação industrial. O Valida Laser, que lê OCR e Data Matrix direto no navegador, está em uso na linha e reduziu a validação de peças de cerca de 10 minutos para menos de 1.",
+    en: "I'm Iuran, a developer based in Manaus. I build web applications with React, TypeScript and Node.js, and Power BI dashboards for industrial operations. Valida Laser, which reads OCR and Data Matrix codes right in the browser, is in use on the production line and cut part validation from about 10 minutes to under 1.",
   } satisfies Localized,
 };
 
